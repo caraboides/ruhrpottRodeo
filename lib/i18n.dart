@@ -6,15 +6,23 @@ class AppLocalizations {
   final String dayTwo;
   final String dayThree;
   final String bands;
-
-  static const delegate = AppLocalizationsDelegate();
+  final String schedule;
+  final String mySchedule;
+  final String news;
+  final String faq;
 
   const AppLocalizations({
     this.dayOne,
     this.dayTwo,
     this.dayThree,
     this.bands,
+    this.schedule,
+    this.mySchedule,
+    this.news,
+    this.faq,
   });
+
+  static const delegate = AppLocalizationsDelegate();
 
   static AppLocalizations of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
@@ -42,6 +50,10 @@ const _de = AppLocalizations(
   dayTwo: 'Tag 2',
   dayThree: 'Tag 3',
   bands: 'Bands',
+  schedule: 'Plan',
+  mySchedule: 'Mein Plan',
+  news: 'Neuigkeiten',
+  faq: 'FAQ',
 );
 
 const _en = AppLocalizations(
@@ -49,4 +61,8 @@ const _en = AppLocalizations(
   dayTwo: 'Day 2',
   dayThree: 'Day 3',
   bands: 'Bands',
+  schedule: 'Schedule',
+  mySchedule: 'My Schedule',
+  news: 'News',
+  faq: 'FAQ',
 );

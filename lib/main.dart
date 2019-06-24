@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'i18n.dart';
 import 'event_list_view.dart';
+import 'menu.dart';
 import 'schedule.dart';
 
 void main() => runApp(MyApp());
@@ -39,6 +40,7 @@ class HomeScreen extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        drawer: const Menu(),
         appBar: AppBar(
           bottom: TabBar(
             tabs: [
@@ -55,10 +57,10 @@ class HomeScreen extends StatelessWidget {
             EventListView(
               eventFilter: Schedule.allBandsOf,
             ),
-             EventListView(
+            EventListView(
               eventFilter: Schedule.firstDayOf,
             ),
-             EventListView(
+            EventListView(
               eventFilter: Schedule.secondDayOf,
             ),
             EventListView(
