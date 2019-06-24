@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ruhrpott_rodeo/faq.dart';
 
 import 'home.dart';
 import 'i18n.dart';
+import 'my_schedule.dart';
+import 'news.dart';
 import 'schedule.dart';
 
 void main() => runApp(MyApp());
@@ -17,7 +20,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.deepOrange,
         ),
-        home: HomeScreen(),
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -27,6 +29,13 @@ class MyApp extends StatelessWidget {
           const Locale('en'),
           const Locale('de'),
         ],
+        initialRoute: 'home',
+        routes: {
+          'home': (context) => HomeScreen(),
+          'mySchedule': (context) => MySchedule(),
+          'news': (context) => News(),
+          'faq': (context) => FAQ(),
+        },
       ),
     );
   }
