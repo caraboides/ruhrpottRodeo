@@ -1,0 +1,93 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'model.dart';
+
+class Schedule extends InheritedWidget {
+  Schedule({
+    Key key,
+    @required Widget child,
+    this.events,
+  }) : super(key: key, child: child);
+
+  final List<Event> events;
+
+  static List<Event> of(BuildContext context) {
+    Schedule schedule = context.inheritFromWidgetOfExactType(Schedule);
+    return schedule.events;
+  }
+
+  @override
+  bool updateShouldNotify(Schedule oldWidget) => oldWidget.events != events;
+}
+
+class ScheduleProvider extends StatefulWidget {
+  ScheduleProvider({
+    Key key,
+    this.child,
+  }) : super(key: key);
+
+  final Widget child;
+
+  @override
+  ScheduleProviderState createState() => ScheduleProviderState();
+}
+
+class ScheduleProviderState extends State<ScheduleProvider> {
+  Future<List<Event>> loadInitialData() async {
+    final List<dynamic> json = jsonDecode(await DefaultAssetBundle.of(context)
+        .loadString("assets/initialSchedule.json"));
+    return json
+        .expand<Event>((stageDay) => stageDay['timeSlots']
+            .where((entry) => !entry['placeholder'])
+            .map<Event>((entry) => buildEvent(stageDay, entry))
+            .toList())
+        .toList();
+  }
+
+  /// List of Items
+  List<Event> _events = <Event>[];
+
+  @override
+  void initState() {
+    super.initState();
+    loadInitialData().then((newEvents) {
+      setState(() {
+        _events = newEvents;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Schedule(
+      events: _events,
+      child: widget.child,
+    );
+  }
+
+  /*
+    "name": "Ruhrpott Stage",
+    "date": "2019-07-04T22:00:00.000+0000",
+    "timeSlots": [
+      {
+        "id": "061b56f5-3688-4a33-a21f-37e418a3e0cd",
+        "name": "Change Over",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-05T11:00:00.000+0000",
+        "": "2019-07-05T13:24:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+    */
+  Event buildEvent(Map<String, dynamic> stageDay, Map<String, dynamic> entry) =>
+      Event(
+        bandName: entry['name'],
+        description: entry['descriptionText'],
+        id: entry['id'],
+        stage: stageDay['name'],
+        start: DateTime.parse(entry['startTime']),
+        end: DateTime.parse(entry['endTime']),
+      );
+}
