@@ -12,22 +12,32 @@ class Schedule extends InheritedWidget {
 
   final List<Event> events;
 
+  static List<T> sort<T>(Iterable<T> list,int compare(T a, T b)) {
+      List<T> willBeSorted = List.from(list);
+      willBeSorted.sort(compare);
+      return willBeSorted;
+  }
 
-  static List<Event> allOf(BuildContext context) {
+  static List<Event> of(BuildContext context) {
     Schedule schedule = context.inheritFromWidgetOfExactType(Schedule);
     return schedule.events;
   }
 
+
+  static List<Event> allBandsOf(BuildContext context) {
+    return sort(of(context),(a,b) => a.bandName.compareTo(b.bandName));
+  }
+
   static List<Event> firstDayOf(BuildContext context) {
-    return allOf(context).where((item) => item.start.day==5).toList();
+    return sort(of(context).where((item) => item.start.day==5),(a,b) => a.start.compareTo(b.start));
   }
 
   static List<Event> secondDayOf(BuildContext context) {
-    return allOf(context).where((item) => item.start.day==6).toList();
+    return sort(of(context).where((item) => item.start.day==6),(a,b) => a.start.compareTo(b.start));
   }
 
   static List<Event> thirdDayOf(BuildContext context) {
-    return allOf(context).where((item) => item.start.day==7).toList();
+    return sort(of(context).where((item) => item.start.day==7),(a,b) => a.start.compareTo(b.start));
   }
 
   @override

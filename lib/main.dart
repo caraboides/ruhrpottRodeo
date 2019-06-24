@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             ListView(
-                children: Schedule.allOf(context)
+                children: Schedule.allBandsOf(context)
                     .map((event) => Text(event.bandName))
                     .toList()),
             ListView(
