@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'i18n.dart';
 import 'schedule.dart';
 
 void main() => runApp(MyApp());
@@ -15,6 +17,15 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
         ),
         home: HomeScreen(),
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en'),
+          const Locale('de'),
+        ],
       ),
     );
   }
@@ -23,16 +34,17 @@ class MyApp extends StatelessWidget {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final i18n = AppLocalizations.of(context);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(
             tabs: [
-              Tab(text: "Bands"),
-              Tab(text: "Day1"),
-              Tab(text: "Day2"),
-              Tab(text: "Day3"),
+              Tab(text: i18n.bands),
+              Tab(text: i18n.dayOne),
+              Tab(text: i18n.dayTwo),
+              Tab(text: i18n.dayThree),
             ],
           ),
           title: Text('Ruhrpott Rodeo'),
