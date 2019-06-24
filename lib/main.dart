@@ -40,12 +40,21 @@ class HomeScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             ListView(
-                children: Schedule.of(context)
+                children: Schedule.allOf(context)
                     .map((event) => Text(event.bandName))
                     .toList()),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
-            Icon(Icons.music_note),
+            ListView(
+                children: Schedule.firstDayOf(context)
+                    .map((event) => Text(event.bandName))
+                    .toList()),
+            ListView(
+                children: Schedule.secondDayOf(context)
+                    .map((event) => Text(event.bandName))
+                    .toList()),
+            ListView(
+                children: Schedule.thirdDayOf(context)
+                    .map((event) => Text(event.bandName))
+                    .toList()),
           ],
         ),
       ),

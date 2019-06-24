@@ -12,9 +12,22 @@ class Schedule extends InheritedWidget {
 
   final List<Event> events;
 
-  static List<Event> of(BuildContext context) {
+
+  static List<Event> allOf(BuildContext context) {
     Schedule schedule = context.inheritFromWidgetOfExactType(Schedule);
     return schedule.events;
+  }
+
+  static List<Event> firstDayOf(BuildContext context) {
+    return allOf(context).where((item) => item.start.day==5).toList();
+  }
+
+  static List<Event> secondDayOf(BuildContext context) {
+    return allOf(context).where((item) => item.start.day==6).toList();
+  }
+
+  static List<Event> thirdDayOf(BuildContext context) {
+    return allOf(context).where((item) => item.start.day==7).toList();
   }
 
   @override
