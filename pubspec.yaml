@@ -1,5 +1,5 @@
 name: ruhrpott_rodeo
-description: A new Flutter project.
+description: Ruhrpott Rodeo App
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -20,8 +20,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
-    sdk: flutter#
+    sdk: flutter
   intl: ^0.15.8
+  flutter_launcher_icons: "^0.7.0"
 
 dev_dependencies:
   flutter_test:
@@ -69,3 +70,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/app_logo-76@2x.png"
+  image_path_android: "assets/app_logo-76@2x.png"
