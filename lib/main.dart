@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'i18n.dart';
+import 'event_list_view.dart';
 import 'schedule.dart';
 
 void main() => runApp(MyApp());
@@ -51,22 +52,18 @@ class HomeScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            ListView(
-                children: Schedule.allBandsOf(context)
-                    .map((event) => Text(event.bandName))
-                    .toList()),
-            ListView(
-                children: Schedule.firstDayOf(context)
-                    .map((event) => Text(event.bandName))
-                    .toList()),
-            ListView(
-                children: Schedule.secondDayOf(context)
-                    .map((event) => Text(event.bandName))
-                    .toList()),
-            ListView(
-                children: Schedule.thirdDayOf(context)
-                    .map((event) => Text(event.bandName))
-                    .toList()),
+            EventListView(
+              eventFilter: Schedule.allBandsOf,
+            ),
+             EventListView(
+              eventFilter: Schedule.firstDayOf,
+            ),
+             EventListView(
+              eventFilter: Schedule.secondDayOf,
+            ),
+            EventListView(
+              eventFilter: Schedule.thirdDayOf,
+            ),
           ],
         ),
       ),
