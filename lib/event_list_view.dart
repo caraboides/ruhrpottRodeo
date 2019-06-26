@@ -18,7 +18,7 @@ class EventListView extends StatelessWidget {
         context: context,
         tiles: eventFilter(context)
             .map((event) => CustomListItemTwo(
-                  isLiked:true,
+                  isLiked: false,
                   bandname: event.bandName,
                   start: event.start,
                   stage: event.stage
@@ -54,7 +54,7 @@ class EventListView extends StatelessWidget {
            children: <Widget>[
              AspectRatio(
                aspectRatio: 1.0,
-               child: isLiked?Icon(Icons.favorite):Icon(Icons.mood_bad),
+               child: isLiked?Icon(Icons.favorite):Icon(Icons.favorite_border),
              ),
              Expanded(
                child: Padding(

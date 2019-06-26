@@ -414,6 +414,76 @@
         "endTime": "2019-07-06T17:14:00.000+0000",
         "created": "2019-01-10T11:16:52.000+0000",
         "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "2cc70861-58f2-4d3e-8807-a752834d0948",
+        "name": "SWISS & DIE ANDERN",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-06T17:15:00.000+0000",
+        "endTime": "2019-07-06T18:04:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "2f708e93-6618-4b8a-aefb-20be12e4b66f",
+        "name": "HAMMERHEAD",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-06T18:05:00.000+0000",
+        "endTime": "2019-07-06T18:34:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "f2e6b578-1611-463b-8ffd-bcb7a4d4b1de",
+        "name": "DIE KASSIERER",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-06T18:35:00.000+0000",
+        "endTime": "2019-07-06T19:34:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "274fbf21-8fd7-4f1c-982d-6c177d5d0aea",
+        "name": "HAMMERHEAD",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-06T19:34:00.000+0000",
+        "endTime": "2019-07-06T20:09:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "8ee19b57-7df2-4837-afd3-e21d7cf59ad5",
+        "name": "ME FIRST & THE GIMME GIMMES",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-06T20:10:00.000+0000",
+        "endTime": "2019-07-06T21:14:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "9fb3c637-ecb7-4b12-bb56-3e6c654435fc",
+        "name": "POISON IDEA",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-06T21:15:00.000+0000",
+        "endTime": "2019-07-06T21:49:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "98821df8-3637-4c84-add3-b0374f778461",
+        "name": "HELLACOPTERS",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-06T21:50:00.000+0000",
+        "endTime": "2019-07-06T22:50:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
       }
     ],
     "created": "2019-01-10T11:16:52.000+0000",
@@ -429,9 +499,159 @@
         "id": "93ac74de-4d62-487d-97c1-c4c13aa9f3db",
         "name": "TBA",
         "descriptionText": null,
-        "placeholder": false,
+        "placeholder": true,
         "startTime": "2019-06-07T11:00:00.000+0000",
-        "endTime": "2019-06-07T11:30:00.000+0000",
+        "endTime": "2019-06-07T11:29:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "ad86e837-0bee-4437-b5ca-5c52ca6d6bdf",
+        "name": "KÖNIG KOBRA",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T11:30:00.000+0000",
+        "endTime": "2019-06-07T11:59:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "7a5520ff-c4c8-443a-8d45-1db809c55011",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T12:00:00.000+0000",
+        "endTime": "2019-06-07T12:49:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "f38e4d07-18bf-4959-bffc-69f9ce4c26e1",
+        "name": "MR. MARCAILLE",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T12:50:00.000+0000",
+        "endTime": "2019-06-07T13:24:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "8d856621-f356-4751-b0c7-003431a857b1",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T13:25:00.000+0000",
+        "endTime": "2019-06-07T14:09:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "e51019d7-01c2-4b0f-a87b-7c6ff4472ef8",
+        "name": "CHEFDENKER",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T14:10:00.000+0000",
+        "endTime": "2019-06-07T14:39:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "bc7faf53-9868-49f3-b482-f7a7bf866b08",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T14:40:00.000+0000",
+        "endTime": "2019-06-07T15:24:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "68365623-4f8c-435e-9e28-242190c6a9e8",
+        "name": "SKIN OF TEARS",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T15:25:00.000+0000",
+        "endTime": "2019-06-07T15:54:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "d8746487-6402-4780-b4b0-d7948faf9a2f",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T15:55:00.000+0000",
+        "endTime": "2019-06-07T16:44:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "f1c9e7fa-554a-4c6d-8e2a-e53fe6689902",
+        "name": "MAL ELEVE",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T16:45:00.000+0000",
+        "endTime": "2019-06-07T17:14:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "de770a66-b38c-4cc0-b534-4b59a0e90db5",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T17:15:00.000+0000",
+        "endTime": "2019-06-07T18:04:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "661fd916-a3b7-4a99-8966-19993011bb6e",
+        "name": "HAMMERHEAD",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T18:05:00.000+0000",
+        "endTime": "2019-06-07T18:34:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "a0377c29-2695-4ddc-8b86-36378e4df958",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T18:35:00.000+0000",
+        "endTime": "2019-06-07T19:34:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "81f9952c-fec0-4c8b-b7d9-e45b9e0087e3",
+        "name": "POISON IDEA",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T19:35:00.000+0000",
+        "endTime": "2019-06-07T20:09:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "d23bb305-be28-4a3f-90af-368fdf3ddbf6",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-06-07T20:10:00.000+0000",
+        "endTime": "2019-06-07T21:14:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "9447c737-c5da-46af-9a0a-732030191d29",
+        "name": "LOKALMATADORE",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-06-07T21:15:00.000+0000",
+        "endTime": "2019-06-07T21:49:00.000+0000",
         "created": "2019-01-10T11:16:52.000+0000",
         "updated": "2019-01-10T11:16:52.000+0000"
       }
@@ -447,11 +667,141 @@
     "timeSlots": [
       {
         "id": "d1018510-fb22-47ba-84fa-3a273d126cd5",
-        "name": "TBA",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T11:00:00.000+0000",
+        "endTime": "2019-07-07T11:29:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "03c04784-6075-4d6f-8905-5f6586400c5d",
+        "name": "GÖTZ WIDMANN",
         "descriptionText": null,
         "placeholder": false,
-        "startTime": "2019-07-07T11:00:00.000+0000",
-        "endTime": "2019-07-07T22:59:00.000+0000",
+        "startTime": "2019-07-07T11:30:00.000+0000",
+        "endTime": "2019-07-07T12:19:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "1d1de1b2-0035-41a8-80d7-605b48351ba6",
+        "name": "PLACEHOLDER",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T12:20:00.000+0000",
+        "endTime": "2019-07-07T12:49:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "b9054bb0-87b0-4150-b8d2-321109e54e9f",
+        "name": "THE RAMONAS",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T12:50:00.000+0000",
+        "endTime": "2019-07-07T13:29:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "8410220d-5a62-46fa-8c64-80192417b22f",
+        "name": "GRINDHOUSE",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T13:30:00.000+0000",
+        "endTime": "2019-07-07T13:59:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "dc1e7cbb-66f1-4a89-9509-7a673edee10a",
+        "name": "THE CASUALTIES",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T14:00:00.000+0000",
+        "endTime": "2019-07-07T14:44:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "61878c81-8c56-4d46-9553-d34159a7e5d1",
+        "name": "FERRIS MC",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T14:45:00.000+0000",
+        "endTime": "2019-07-07T15:14:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "4c0a2e17-a224-4f5c-99ce-5c1bfac939da",
+        "name": "MARKY RAMONE",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T15:15:00.000+0000",
+        "endTime": "2019-07-07T16:04:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "2b9035bc-507d-4ce2-9b77-2e1db0714eb3",
+        "name": "FERRIS MC",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T16:05:00.000+0000",
+        "endTime": "2019-07-07T16:44:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "a40040a5-947f-4027-bab9-897f742448c3",
+        "name": "MASSENDEFEKT",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T16:45:00.000+0000",
+        "endTime": "2019-07-07T17:29:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "29f06581-2af2-4448-a108-dad7aea3e820",
+        "name": "D.I.",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T17:30:00.000+0000",
+        "endTime": "2019-07-07T18:04:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "35d7cb11-71ce-4a33-8728-7cbb7664ea7b",
+        "name": "MILLENCOLIN",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T18:05:00.000+0000",
+        "endTime": "2019-07-07T19:09:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "1c3cd439-29e7-4176-a2b1-ae9437ee4f58",
+        "name": "TURBOSTAAT",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T19:10:00.000+0000",
+        "endTime": "2019-07-07T19:44:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "adca218c-3e59-4722-a57c-e130048a86c9",
+        "name": "SKA-P",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T19:45:00.000+0000",
+        "endTime": "2019-07-07T20:59:00.000+0000",
         "created": "2019-01-10T11:16:52.000+0000",
         "updated": "2019-01-10T11:16:52.000+0000"
       }
@@ -469,9 +819,139 @@
         "id": "0e165145-185c-4687-b450-751fb33e269c",
         "name": "TBA",
         "descriptionText": null,
-        "placeholder": false,
+        "placeholder": true,
         "startTime": "2019-07-07T11:00:00.000+0000",
-        "endTime": "2019-07-07T22:59:00.000+0000",
+        "endTime": "2019-07-07T12:19:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "fadb1848-e584-4e16-b522-d907eae1f50e",
+        "name": "RABBLE ROUSERS",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T12:19:00.000+0000",
+        "endTime": "2019-07-07T12:49:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "c1b8157e-112d-4403-ab9c-53786f7ecce7",
+        "name": "THE RAMONAS",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T12:50:00.000+0000",
+        "endTime": "2019-07-07T13:29:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "a004b50b-ad0d-4591-ac73-a9dba81c8b99",
+        "name": "GRINDHOUSE",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T13:30:00.000+0000",
+        "endTime": "2019-07-07T13:59:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "dcf3ddeb-97df-4b0c-a482-b32399c6572c",
+        "name": "THE CASUALTIES",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T14:00:00.000+0000",
+        "endTime": "2019-07-07T14:44:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "dcb030fd-a976-4245-8011-436d234e954e",
+        "name": "FERRIS MC",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T14:45:00.000+0000",
+        "endTime": "2019-07-07T15:14:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "4352ee95-77bc-4102-94a2-291a3d8287bc",
+        "name": "MARKY RAMONE",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T15:15:00.000+0000",
+        "endTime": "2019-07-07T16:04:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "59a04ca6-a970-4e34-98f9-9ff16e8cbe09",
+        "name": "CRYSSIS",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T16:05:00.000+0000",
+        "endTime": "2019-07-07T16:39:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "33b4757b-f4e7-40ef-a307-196053aba80d",
+        "name": "MASSENDEFEKT",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T16:40:00.000+0000",
+        "endTime": "2019-07-07T17:29:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "77d8ece2-be8b-49ef-9866-83ebfb232f86",
+        "name": "D.I.",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T17:30:00.000+0000",
+        "endTime": "2019-07-07T18:04:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "90e525bc-a4a7-4d19-8ed4-81d157d29686",
+        "name": "MILLENCOLIN",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T18:05:00.000+0000",
+        "endTime": "2019-07-07T19:09:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "99916e47-d50f-44aa-a073-1aa1e38a94c9",
+        "name": "TURBOSTAAT",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T19:10:00.000+0000",
+        "endTime": "2019-07-07T19:44:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "970b3983-efcd-4def-af24-e35323dab892",
+        "name": "SKA-P",
+        "descriptionText": null,
+        "placeholder": true,
+        "startTime": "2019-07-07T19:45:00.000+0000",
+        "endTime": "2019-07-07T20:59:00.000+0000",
+        "created": "2019-01-10T11:16:52.000+0000",
+        "updated": "2019-01-10T11:16:52.000+0000"
+      },
+      {
+        "id": "3b008966-7e68-42c2-af89-f54b61c0fc51",
+        "name": "TALCO",
+        "descriptionText": null,
+        "placeholder": false,
+        "startTime": "2019-07-07T21:00:00.000+0000",
+        "endTime": "2019-07-07T21:59:00.000+0000",
         "created": "2019-01-10T11:16:52.000+0000",
         "updated": "2019-01-10T11:16:52.000+0000"
       }
