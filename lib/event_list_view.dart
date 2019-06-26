@@ -72,7 +72,7 @@ class CustomListItemTwo extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: _EventDescription(
                 bandname: bandname,
                 start: start,
@@ -101,48 +101,33 @@ class _EventDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: stage == "Ruhrpott Stage"
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end,
       children: <Widget>[
-        Expanded(
-          flex: 2,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                '$bandname',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
-              Text(
-                '${formatter.format(start.toLocal())}',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.black54,
-                ),
-              ),
-            ],
+        Text(
+          '$bandname',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                '$stage',
-                style: const TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.black87,
-                ),
-              ),
-            ],
+        const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+        Text(
+          '${formatter.format(start.toLocal())}',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            fontSize: 12.0,
+            color: Colors.black54,
+          ),
+        ),
+        Text(
+          '$stage',
+          style: const TextStyle(
+            fontSize: 12.0,
+            color: Colors.black87,
           ),
         ),
       ],
