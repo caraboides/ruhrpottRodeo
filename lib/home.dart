@@ -70,7 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
               Tab(text: i18n.dayThree),
             ],
           ),
-          title: Text('Ruhrpott Rodeo'),
+          title: Text('RUHRPOTT RODEO',
+              style: TextStyle(
+                fontFamily: 'Beer Money',
+                fontSize: 26,
+              )),
         ),
         body: TabBarView(
           children: [

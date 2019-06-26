@@ -29,7 +29,11 @@ class FAQ extends StatelessWidget {
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
-        title: Text('FAQ'),
+        title: Text('FAQ',
+            style: TextStyle(
+              fontFamily: 'Beer Money',
+              fontSize: 26,
+            )),
       ),
       body:FutureBuilder<List<Faq>>(
        future: data, // a previously-obtained Future<String> or null

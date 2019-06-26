@@ -8,7 +8,11 @@ class MySchedule extends StatelessWidget {
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
-        title: Text('My Schedule'),
+        title: Text('MY SCHEDULE',
+            style: TextStyle(
+              fontFamily: 'Beer Money',
+              fontSize: 26,
+            )),
       ),
       body: Center(
         child: Text('My Schedule Content'),

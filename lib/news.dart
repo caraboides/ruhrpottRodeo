@@ -8,7 +8,11 @@ class News extends StatelessWidget {
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
-        title: Text('News'),
+        title: Text('NEWS',
+            style: TextStyle(
+              fontFamily: 'Beer Money',
+              fontSize: 26,
+            )),
       ),
       body: Center(
         child: Text('News Content'),
