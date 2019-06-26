@@ -1,0 +1,100 @@
+[
+  {
+    "id": "9c23fe8b-2bbb-45ac-9ebb-d081bb5ba0a3",
+    "question": "DARF ICH GETRÄNKE MITBRINGEN?",
+    "answer": "Auf das Campinggelände könnt ihr Getränke mitbringen. Glas ist auf dem gesamten Gelände (auch auf dem Parkplatz) verboten. Das werden wir kontrollieren, die Kühe wollen nach dem Festival auch noch ihren Spaß auf der Wiese haben! Kauft Plastik Flaschen, Tetra Packs oder Dosen.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "9638892c-5977-4dcf-96b1-1a80bb6896d1",
+    "question": "KOMMT MEIN KIND UMSONST REIN?",
+    "answer": "Kinder unter 9 Jahren haben freien Eintritt.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "db323d10-4f85-4a6b-902c-f0ffd6ca6ee6",
+    "question": "KANN ICH AUF DEM CAMPINGPLATZ GRILLEN?",
+    "answer": "Ja, wenn du einen Grill mitbringst ist das kein Problem. Offene Feuerstellen sind verboten und werden sofort gelöscht.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "3b700f0d-d910-4acf-a864-957e47463c1a",
+    "question": "DARF ICH GASKARTUSCHEN MITBRINGEN?",
+    "answer": "Es dürfen nur Gaskartuschen (Stech- und Ventilkartuschen) bis maximal 450g Füllgewicht verwendet werden. Größere Gasflaschen sind verboten.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "b92d0f26-15bb-43de-9403-6df2c56cc3ee",
+    "question": "SIND STROMAGGREGATE ERLAUBT?",
+    "answer": "Nein, Stromaggregate sind auf dem gesamten Gelände aus Sicherheitsgründen verboten.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "ac1bbe9e-a963-416f-af06-05e8974f5de3",
+    "question": "WELCHE GEGENSTÄNDE SICH NOCH VERBOTEN?",
+    "answer": "Pyrotechnische Gegenstände, Waffen aller Art, Trockeneis und Glasbehältnisse.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "a1febf80-a8d9-422e-90b4-5bf7abca8537",
+    "question": "WIE FUNKTIONIERT DAS MIT DEM MÜLLPFAND?",
+    "answer": "Jeder Camper muss 5 Euro Müllpfand bezahlen. Die meisten Besucher haben ja schon die 5 Euro beim Ticketkauf bezahlt (Campingticket = Müllpfand). Beim Einchecken bekommt jeder Camper einen Müllsack. Wenn Du den Müllsack vor deiner Abreise gut gefüllt an der Müllpfandstation am Eingang zurückgibst, bekommst du wahlweise die 5 Euro oder einen Ruhrpott Rodeo Beutel mit tollem Inhalt zurück (so lange der Vorrat reicht). Das gilt auch wenn du nur eine Nacht zeltest. Müllsack Rückgabe Zeiten werden noch bekannt gegeben.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "0d0dcc1e-73a0-45fc-a80b-98df8f15253d",
+    "question": "KANN ICH MEINEN HUND MITBRINGEN?",
+    "answer": "Nein! Die Erfahrungen der letzten Jahre haben gezeigt das Hunde auf Festivals nichts zu suchen haben. Lasst eure Vierbeiner zu Hause wenn ihr keine Tierquäler seid.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "9544c781-1c73-4cfa-a012-6ae0693f8dc7",
+    "question": "GIBT ES DIE MÖGLICHKEIT KOSTENLOS AN WASSER ZU KOMMEN?",
+    "answer": "Ja, es gibt auf jeder Campingwiese mindestens eine Wasserstelle, wo ihr jederzeit Trinkwasser holen könnt.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "a3aceb9e-99f8-4ba3-95a6-c49252387e4c",
+    "question": "GIBT ES AUF DEM GELÄNDE EINEN GELDAUTOMATEN?",
+    "answer": "Na klar! Im Infield steht einer.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "fd61af33-b132-42c4-bc51-3ed49bd7d791",
+    "question": "KANN ICH ALS ROLLSTUHLFAHRER AUFS FESTIVAL?",
+    "answer": "Na klar! Das Festival ist Rollstuhlgerecht. Die Schleusen sind breit genug, es gibt rollstuhlgerechte Toilettenkabinen und wir haben einen Rollipodest.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "402d432d-d1a6-483d-91fa-45aff36cae37",
+    "question": "BEGLEITPERSONEN BEHINDERTE",
+    "answer": "Menschen mit \"Schwerbehindertenausweis Merkzeichen B\" , die auf ständige Begleitung angewiesen sind, dürfen eine Begleitperson kostenlos mit rein nehmen.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "0722febe-caad-4c0b-83b4-8f5a997c376d",
+    "question": "WIRD DAS RUHRPOTT RODEO 2019 WIEDER SO GEIL WIE LETZTES JAHR?",
+    "answer": "Nein! Noch viel geiler! Warts ab!",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  },
+  {
+    "id": "9ccc5002-70ea-45d2-b7a7-394ef6399c81",
+    "question": "WO KANN ICH MIT MEINEM WOHNMOBIL PARKEN?",
+    "answer": "Es gibt einen Caravan- Stellplatz zwischen dem Festivalgelände und dem Campingplatz. Dort könnt ihr parken, wenn euer Fahrzeug als Campingfahrzeug ausgewiesen ist. Fahrzeuge sind bis 3,5 t zulässiges Gesamtgewicht zugelassen.  PKW (auch Kombis) sind keine Campingfahrzeuge und werden für den Caravanplatz nicht zugelassen. Der Wohnmobil Stellplatz ist eingezäunt und es gibt separate Dixie Klos. Du kannst dein Vorzelt dort aufbauen. Auch auf dem Wohnmobil Stellplatz benötigst du ein Müllpfandbändchen.",
+    "created": "2019-01-10T11:16:52.000+0000",
+    "updated": "2019-01-10T11:16:52.000+0000"
+  }
+]
