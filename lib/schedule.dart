@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'model.dart';
 
 class Schedule extends InheritedWidget {
@@ -60,13 +61,29 @@ class ScheduleProviderState extends State<ScheduleProvider> {
   Future<List<Event>> loadInitialData() async {
     final List<dynamic> json = jsonDecode(await DefaultAssetBundle.of(context)
         .loadString("assets/initialSchedule.json"));
+    return parseEvents(json);
+  }
+
+  parseEvents(List<dynamic> json) {
     return json
         .expand<Event>((stageDay) => stageDay['timeSlots']
-            .where((entry) => !entry['placeholder'])
-            .map<Event>((entry) => buildEvent(stageDay, entry))
-            .toList())
+        .where((entry) => !entry['placeholder'])
+        .map<Event>((entry) => buildEvent(stageDay, entry))
+        .toList())
         .toList();
   }
+
+  Future<List<Event>> loadRemoteData() async {
+    final response = await http.get('https://ruhrpott-rodeo.app-domain.de/app/days');
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON.
+      final List<dynamic> json = jsonDecode(response.body);
+      return parseEvents(json);
+    } else {
+      return List<Event>();
+    }
+  }
+
 
   /// List of Items
   List<Event> _events = <Event>[];
@@ -75,6 +92,11 @@ class ScheduleProviderState extends State<ScheduleProvider> {
   void initState() {
     super.initState();
     loadInitialData().then((newEvents) {
+      loadRemoteData().then((newEvents) {
+        setState(() {
+          _events = newEvents;
+        });
+      });
       setState(() {
         _events = newEvents;
       });
