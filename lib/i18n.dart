@@ -10,6 +10,8 @@ class AppLocalizations {
   final String mySchedule;
   final String news;
   final String faq;
+  final String addEventToSchedule;
+  final String removeEventFromSchedule;
 
   const AppLocalizations({
     this.dayOne,
@@ -20,6 +22,8 @@ class AppLocalizations {
     this.mySchedule,
     this.news,
     this.faq,
+    this.addEventToSchedule,
+    this.removeEventFromSchedule,
   });
 
   static const delegate = AppLocalizationsDelegate();
@@ -54,6 +58,8 @@ const _de = AppLocalizations(
   mySchedule: 'Mein Plan',
   news: 'Neuigkeiten',
   faq: 'FAQ',
+  addEventToSchedule: 'Füge Auftritt zum Plan hinzu',
+  removeEventFromSchedule: 'Entferne Auftritt vom Plan',
 );
 
 const _en = AppLocalizations(
@@ -65,4 +71,6 @@ const _en = AppLocalizations(
   mySchedule: 'My Schedule',
   news: 'News',
   faq: 'FAQ',
+  addEventToSchedule: 'Add gig to schedule',
+  removeEventFromSchedule: 'Remove gig from schedule',
 );

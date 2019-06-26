@@ -5,7 +5,28 @@ import 'i18n.dart';
 import 'menu.dart';
 import 'schedule.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final Map<String, bool> _likedEvents = {};
+
+  void _toggleEvent(String eventId) {
+    this.setState(() {
+      _likedEvents[eventId] = !(_likedEvents[eventId] ?? false);
+    });
+  }
+
+  Widget _buildEventList(EventFilter eventFilter) {
+    return EventListView(
+      eventFilter: Schedule.allBandsOf,
+      likedEvents: _likedEvents,
+      toggleEvent: _toggleEvent,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
@@ -26,18 +47,10 @@ class HomeScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            EventListView(
-              eventFilter: Schedule.allBandsOf,
-            ),
-            EventListView(
-              eventFilter: Schedule.firstDayOf,
-            ),
-            EventListView(
-              eventFilter: Schedule.secondDayOf,
-            ),
-            EventListView(
-              eventFilter: Schedule.thirdDayOf,
-            ),
+            _buildEventList(Schedule.allBandsOf),
+            _buildEventList(Schedule.firstDayOf),
+            _buildEventList(Schedule.secondDayOf),
+            _buildEventList(Schedule.thirdDayOf),
           ],
         ),
       ),

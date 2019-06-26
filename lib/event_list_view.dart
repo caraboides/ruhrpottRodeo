@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ruhrpott_rodeo/i18n.dart';
 import 'model.dart';
 
 typedef EventFilter = List<Event> Function(BuildContext context);
@@ -8,8 +9,15 @@ var formatter = new DateFormat('HH:mm');
 
 class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
+  final Map<String, bool> likedEvents;
+  final ValueChanged<String> toggleEvent;
 
-  const EventListView({Key key, this.eventFilter}) : super(key: key);
+  const EventListView({
+    Key key,
+    this.eventFilter,
+    this.likedEvents,
+    this.toggleEvent,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +26,11 @@ class EventListView extends StatelessWidget {
         context: context,
         tiles: eventFilter(context)
             .map((event) => CustomListItemTwo(
-                  isLiked: false,
+                  isLiked: likedEvents[event.id] ?? false,
                   bandname: event.bandName,
                   start: event.start,
-                  stage: event.stage
+                  stage: event.stage,
+                  toggleEvent: () => toggleEvent(event.id),
                 ))
             .toList(),
       ).toList(),
@@ -29,110 +38,114 @@ class EventListView extends StatelessWidget {
   }
 }
 
- class CustomListItemTwo extends StatelessWidget {
-   CustomListItemTwo({
-     Key key,
-     this.isLiked,
-     this.bandname,
-     this.start,
-     this.stage,
-   }) : super(key: key);
+class CustomListItemTwo extends StatelessWidget {
+  CustomListItemTwo({
+    Key key,
+    this.isLiked,
+    this.bandname,
+    this.start,
+    this.stage,
+    this.toggleEvent,
+  }) : super(key: key);
 
-   final bool isLiked;
-   final String bandname;
-   final DateTime start;
-   final String stage;
+  final bool isLiked;
+  final String bandname;
+  final DateTime start;
+  final String stage;
+  final VoidCallback toggleEvent;
 
-   @override
-   Widget build(BuildContext context) {
-     return Padding(
-       padding: const EdgeInsets.symmetric(vertical: 10.0),
-       child: SizedBox(
-         height: 50,
-         child: Row(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: <Widget>[
-             AspectRatio(
-               aspectRatio: 1.0,
-               child: isLiked?Icon(Icons.favorite):Icon(Icons.favorite_border),
-             ),
-             Expanded(
-               child: Padding(
-                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
-                 child: _EventDescription(
-                   bandname: bandname,
-                   start: start,
-                   stage: stage,
-                 ),
-               ),
-             )
-           ],
-         ),
-       ),
-     );
-   }
- }
+  @override
+  Widget build(BuildContext context) {
+    final i18n = AppLocalizations.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      height: 70,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          IconButton(
+            icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
+            tooltip: isLiked
+                ? i18n.removeEventFromSchedule
+                : i18n.addEventToSchedule,
+            onPressed: toggleEvent,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+              child: _EventDescription(
+                bandname: bandname,
+                start: start,
+                stage: stage,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
 
-  class _EventDescription extends StatelessWidget {
-   _EventDescription({
-     Key key,
-     this.bandname,
-     this.start,
-     this.stage,
-   }) : super(key: key);
+class _EventDescription extends StatelessWidget {
+  _EventDescription({
+    Key key,
+    this.bandname,
+    this.start,
+    this.stage,
+  }) : super(key: key);
 
-   final String bandname;
-   final DateTime start;
-   final String stage;
+  final String bandname;
+  final DateTime start;
+  final String stage;
 
-   @override
-   Widget build(BuildContext context) {
-     return Column(
-       crossAxisAlignment: CrossAxisAlignment.start,
-       children: <Widget>[
-         Expanded(
-           flex: 2,
-           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             children: <Widget>[
-               Text(
-                 '$bandname',
-                 maxLines: 2,
-                 overflow: TextOverflow.ellipsis,
-                 style: const TextStyle(
-                   fontWeight: FontWeight.bold,
-                 ),
-               ),
-               const Padding(padding: EdgeInsets.only(bottom: 2.0)),
-               Text(
-                 '${formatter.format(start.toLocal())}',
-                 maxLines: 1,
-                 overflow: TextOverflow.ellipsis,
-                 style: const TextStyle(
-                   fontSize: 12.0,
-                   color: Colors.black54,
-                 ),
-               ),
-             ],
-           ),
-         ),
-         Expanded(
-           flex: 1,
-           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             mainAxisAlignment: MainAxisAlignment.end,
-             children: <Widget>[
-               Text(
-                 '$stage',
-                 style: const TextStyle(
-                   fontSize: 12.0,
-                   color: Colors.black87,
-                 ),
-               ),
-             ],
-           ),
-         ),
-       ],
-     );
-   }
- }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                '$bandname',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              Text(
+                '${formatter.format(start.toLocal())}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 12.0,
+                  color: Colors.black54,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                '$stage',
+                style: const TextStyle(
+                  fontSize: 12.0,
+                  color: Colors.black87,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
