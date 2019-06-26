@@ -24,7 +24,6 @@ class Schedule extends InheritedWidget {
     return schedule.events;
   }
 
-
   static List<Event> allBandsOf(BuildContext context) {
     return sort(of(context),(a,b) => a.bandName.compareTo(b.bandName));
   }

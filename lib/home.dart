@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'app_storage.dart';
 import 'event_list_view.dart';
 import 'i18n.dart';
 import 'menu.dart';
 import 'schedule.dart';
+
+const _myScheduleFileName = 'my_schedule.txt';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,12 +14,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Map<String, bool> _likedEvents = {};
+  Map<String, bool> _likedEvents = {};
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_likedEvents.isEmpty) {
+      _loadLikedEvents();
+    }
+  }
+
+  void _loadLikedEvents() async {
+    final appStorage = AppStorage.of(context);
+    final Map<String, dynamic> json =
+        (await appStorage.loadJson(_myScheduleFileName)).orElse({});
+    setState(() {
+      _likedEvents = json.cast<String, bool>();
+    });
+  }
+
+  void _saveLikedEvents() async {
+    final appStorage = AppStorage.of(context);
+    appStorage.storeJson(_myScheduleFileName, _likedEvents);
+  }
 
   void _toggleEvent(String eventId) {
     this.setState(() {
       _likedEvents[eventId] = !(_likedEvents[eventId] ?? false);
     });
+    _saveLikedEvents();
   }
 
   Widget _buildEventList(EventFilter eventFilter, {bool stageview = true}) {
