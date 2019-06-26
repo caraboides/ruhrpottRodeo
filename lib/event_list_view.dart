@@ -11,12 +11,14 @@ class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
   final Map<String, bool> likedEvents;
   final ValueChanged<String> toggleEvent;
+  final bool stageview;
 
   const EventListView({
     Key key,
     this.eventFilter,
     this.likedEvents,
     this.toggleEvent,
+    this.stageview,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class EventListView extends StatelessWidget {
                   start: event.start,
                   stage: event.stage,
                   toggleEvent: () => toggleEvent(event.id),
+                  stageview: stageview,
                 ))
             .toList(),
       ).toList(),
@@ -46,6 +49,7 @@ class CustomListItemTwo extends StatelessWidget {
     this.start,
     this.stage,
     this.toggleEvent,
+    this.stageview,
   }) : super(key: key);
 
   final bool isLiked;
@@ -53,6 +57,7 @@ class CustomListItemTwo extends StatelessWidget {
   final DateTime start;
   final String stage;
   final VoidCallback toggleEvent;
+  final bool stageview;
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +82,8 @@ class CustomListItemTwo extends StatelessWidget {
                 bandname: bandname,
                 start: start,
                 stage: stage,
+                stageview: stageview,
+
               ),
             ),
           )
@@ -92,18 +99,19 @@ class _EventDescription extends StatelessWidget {
     this.bandname,
     this.start,
     this.stage,
+    this.stageview
   }) : super(key: key);
 
   final String bandname;
   final DateTime start;
   final String stage;
+  final bool stageview;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: stage == "Ruhrpott Stage"
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.end,
+      crossAxisAlignment: !stageview||stage=="Ruhrpott Stage"?CrossAxisAlignment.start:CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Text(
           '$bandname',

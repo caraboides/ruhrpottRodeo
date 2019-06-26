@@ -19,11 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Widget _buildEventList(EventFilter eventFilter) {
+  Widget _buildEventList(EventFilter eventFilter, {bool stageview = true}) {
     return EventListView(
-      eventFilter: Schedule.allBandsOf,
+      eventFilter: eventFilter,
       likedEvents: _likedEvents,
       toggleEvent: _toggleEvent,
+      stageview: stageview,
     );
   }
 
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: TabBarView(
           children: [
-            _buildEventList(Schedule.allBandsOf),
+            _buildEventList(Schedule.allBandsOf, stageview: false),
             _buildEventList(Schedule.firstDayOf),
             _buildEventList(Schedule.secondDayOf),
             _buildEventList(Schedule.thirdDayOf),
