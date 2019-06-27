@@ -14,6 +14,7 @@ class AppLocalizations {
   final String addEventToSchedule;
   final String removeEventFromSchedule;
   final String locale;
+  final String eventDetailsHeader;
 
   const AppLocalizations({
     this.dayOne,
@@ -27,6 +28,7 @@ class AppLocalizations {
     this.addEventToSchedule,
     this.removeEventFromSchedule,
     this.locale,
+    this.eventDetailsHeader,
   });
 
   DateFormat format(formatString) => DateFormat(formatString, locale);
@@ -66,6 +68,7 @@ const _de = AppLocalizations(
   addEventToSchedule: 'Füge Auftritt zum Plan hinzu',
   removeEventFromSchedule: 'Entferne Auftritt vom Plan',
   locale: 'de_DE',
+  eventDetailsHeader: 'BAND DETAILS',
 );
 
 const _en = AppLocalizations(
@@ -75,9 +78,10 @@ const _en = AppLocalizations(
   bands: 'Bands',
   schedule: 'SCHEDULE',
   mySchedule: 'MY SCHEDULE',
-  drive: 'how to find us',
+  drive: 'LOCATION',
   faq: 'FAQ',
   addEventToSchedule: 'Add gig to schedule',
   removeEventFromSchedule: 'Remove gig from schedule',
   locale: 'en_US',
+  eventDetailsHeader: 'BAND DETAILS',
 );

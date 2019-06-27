@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'app_storage.dart' as appStorage;
+import 'event_detail_view.dart';
 import 'event_list_view.dart';
 import 'i18n.dart';
 import 'menu.dart';
+import 'model.dart';
 import 'schedule.dart';
 
 const _myScheduleFileName = 'my_schedule.txt';
@@ -42,12 +44,20 @@ class _HomeScreenState extends State<HomeScreen> {
     _saveLikedEvents();
   }
 
+  void _openEventDetails(Event event) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => EventDetailView(event),
+      fullscreenDialog: true,
+    ));
+  }
+
   Widget _buildEventList(EventFilter eventFilter, {bool bandView = false}) {
     return EventListView(
       eventFilter: eventFilter,
       likedEvents: _likedEvents,
       toggleEvent: _toggleEvent,
       bandView: bandView,
+      openEventDetails: _openEventDetails,
     );
   }
 

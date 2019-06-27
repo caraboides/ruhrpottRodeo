@@ -12,6 +12,7 @@ class EventListView extends StatelessWidget {
   final Map<String, bool> likedEvents;
   final ValueChanged<String> toggleEvent;
   final bool bandView;
+  final ValueChanged<Event> openEventDetails;
 
   const EventListView({
     Key key,
@@ -19,6 +20,7 @@ class EventListView extends StatelessWidget {
     this.likedEvents,
     this.toggleEvent,
     this.bandView,
+    this.openEventDetails,
   }) : super(key: key);
 
   @override
@@ -34,6 +36,7 @@ class EventListView extends StatelessWidget {
                   stage: event.stage,
                   toggleEvent: () => toggleEvent(event.id),
                   bandView: bandView,
+                  openEventDetails: () => openEventDetails(event),
                 ))
             .toList(),
       ).toList(),
@@ -50,6 +53,7 @@ class CustomListItemTwo extends StatelessWidget {
     this.stage,
     this.toggleEvent,
     this.bandView,
+    this.openEventDetails,
   }) : super(key: key);
 
   final bool isLiked;
@@ -58,35 +62,44 @@ class CustomListItemTwo extends StatelessWidget {
   final String stage;
   final VoidCallback toggleEvent;
   final bool bandView;
+  final VoidCallback openEventDetails;
 
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      height: 70,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          IconButton(
-            icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
-            tooltip: isLiked
-                ? i18n.removeEventFromSchedule
-                : i18n.addEventToSchedule,
-            onPressed: toggleEvent,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: _EventDescription(
-                bandname: bandname,
-                start: start,
-                stage: stage,
-                bandView: bandView,
+    return InkWell(
+      onTap: openEventDetails,
+      child: SafeArea(
+        top: false,
+        bottom: false,
+        minimum: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          height: 70,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
+                tooltip: isLiked
+                    ? i18n.removeEventFromSchedule
+                    : i18n.addEventToSchedule,
+                onPressed: toggleEvent,
               ),
-            ),
-          )
-        ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: _EventDescription(
+                    bandname: bandname,
+                    start: start,
+                    stage: stage,
+                    bandView: bandView,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
