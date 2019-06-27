@@ -8,7 +8,7 @@ class AppLocalizations {
   final String bands;
   final String schedule;
   final String mySchedule;
-  final String news;
+  final String drive;
   final String faq;
   final String addEventToSchedule;
   final String removeEventFromSchedule;
@@ -20,7 +20,7 @@ class AppLocalizations {
     this.bands,
     this.schedule,
     this.mySchedule,
-    this.news,
+    this.drive,
     this.faq,
     this.addEventToSchedule,
     this.removeEventFromSchedule,
@@ -56,7 +56,7 @@ const _de = AppLocalizations(
   bands: 'Bands',
   schedule: 'Plan',
   mySchedule: 'Mein Plan',
-  news: 'Neuigkeiten',
+  drive: 'Anfahrt',
   faq: 'FAQ',
   addEventToSchedule: 'Füge Auftritt zum Plan hinzu',
   removeEventFromSchedule: 'Entferne Auftritt vom Plan',
@@ -69,7 +69,7 @@ const _en = AppLocalizations(
   bands: 'Bands',
   schedule: 'SCHEDULE',
   mySchedule: 'MY SCHEDULE',
-  news: 'NEWS',
+  drive: 'how to find us',
   faq: 'FAQ',
   addEventToSchedule: 'Add gig to schedule',
   removeEventFromSchedule: 'Remove gig from schedule',

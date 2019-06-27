@@ -42,7 +42,7 @@ class FAQ extends StatelessWidget {
            case ConnectionState.none:
            case ConnectionState.active:
            case ConnectionState.waiting:
-             return Text('Awaiting result...');
+             return Container();
            case ConnectionState.done:
              if (list.hasError)
                return Text('Error: ${list.error}');

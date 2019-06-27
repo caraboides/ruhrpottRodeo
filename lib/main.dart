@@ -6,7 +6,7 @@ import 'app_storage.dart';
 import 'home.dart';
 import 'i18n.dart';
 import 'my_schedule.dart';
-import 'news.dart';
+import 'drive.dart';
 import 'schedule.dart';
 
 void main() => runApp(MyApp());
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           routes: {
             'home': (context) => HomeScreen(),
             'mySchedule': (context) => MySchedule(),
-            'news': (context) => News(),
+            'drive': (context) => Drive(),
             'faq': (context) => FAQ(),
           },
         ),
