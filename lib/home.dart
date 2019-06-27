@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_storage.dart';
+import 'app_storage.dart' as appStorage;
 import 'event_list_view.dart';
 import 'i18n.dart';
 import 'menu.dart';
@@ -17,15 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Map<String, bool> _likedEvents = {};
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_likedEvents.isEmpty) {
-      _loadLikedEvents();
-    }
+  void initState() {
+    super.initState();
+    _loadLikedEvents();
   }
 
   void _loadLikedEvents() async {
-    final appStorage = AppStorage.of(context);
     final Map<String, dynamic> json =
         (await appStorage.loadJson(_myScheduleFileName))
             .orElse(<String, bool>{});
@@ -35,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _saveLikedEvents() async {
-    final appStorage = AppStorage.of(context);
     appStorage.storeJson(_myScheduleFileName, _likedEvents);
   }
 
