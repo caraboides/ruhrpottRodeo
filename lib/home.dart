@@ -27,7 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _loadLikedEvents() async {
     final appStorage = AppStorage.of(context);
     final Map<String, dynamic> json =
-        (await appStorage.loadJson(_myScheduleFileName)).orElse({});
+        (await appStorage.loadJson(_myScheduleFileName))
+            .orElse(<String, bool>{});
     setState(() {
       _likedEvents = json.cast<String, bool>();
     });

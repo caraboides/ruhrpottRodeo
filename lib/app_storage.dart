@@ -24,7 +24,6 @@ class AppStorage extends InheritedWidget {
       final file = await _getFileHandle(fileName);
       if (await file.exists()) {
         final fileContent = await file.readAsString();
-        print(fileContent);
         final json = jsonDecode(fileContent) ?? {};
         return Optional.of(json);
       }
