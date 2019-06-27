@@ -19,8 +19,12 @@ class EventDetailView extends StatelessWidget {
               fontSize: 26,
             )),
       ),
-      body: Center(
-        child: Text('Event Details'),
+      body: Column(
+        children: <Widget>[
+          Text(event.bandName),
+          Text(event.description ?? ''),
+          Image.asset('assets/app_logo-1024.png'),
+        ],
       ),
     );
   }

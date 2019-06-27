@@ -6,6 +6,7 @@ import 'event_list_view.dart';
 import 'i18n.dart';
 import 'menu.dart';
 import 'model.dart';
+import 'notifications.dart';
 import 'schedule.dart';
 
 const _myScheduleFileName = 'my_schedule.txt';
@@ -37,9 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
     appStorage.storeJson(_myScheduleFileName, _likedEvents);
   }
 
-  void _toggleEvent(String eventId) {
+  void _toggleEvent(event) {
     this.setState(() {
-      _likedEvents[eventId] = !(_likedEvents[eventId] ?? false);
+      _likedEvents[event.id] = !(_likedEvents[event.id] ?? false);
+      // TODO(SF) add/remove schedule for event - plausibility checks for all liked bands on startup
+      scheduleNotificationForEvent(AppLocalizations.of(context), event);
     });
     _saveLikedEvents();
   }
@@ -77,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Tab(text: i18n.dayThree),
             ],
           ),
-          title: Text('RUHRPOTT RODEO',
+          title: Text('RUHRPOTT RODEO >',
               style: TextStyle(
                 fontFamily: 'Beer Money',
                 fontSize: 26,

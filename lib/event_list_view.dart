@@ -4,13 +4,10 @@ import 'model.dart';
 
 typedef EventFilter = List<Event> Function(BuildContext context);
 
-const timeFormat = 'HH:mm';
-const dateTimeFormat = 'E HH:mm';
-
 class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
   final Map<String, bool> likedEvents;
-  final ValueChanged<String> toggleEvent;
+  final ValueChanged<Event> toggleEvent;
   final bool bandView;
   final ValueChanged<Event> openEventDetails;
 
@@ -34,7 +31,7 @@ class EventListView extends StatelessWidget {
                   bandname: event.bandName,
                   start: event.start,
                   stage: event.stage,
-                  toggleEvent: () => toggleEvent(event.id),
+                  toggleEvent: () => toggleEvent(event),
                   bandView: bandView,
                   openEventDetails: () => openEventDetails(event),
                 ))
@@ -122,7 +119,7 @@ class _EventDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
-    final formatter = i18n.format(bandView ? dateTimeFormat : timeFormat);
+    final formatter = bandView ? i18n.dateTimeFormat : i18n.timeFormat;
     return Column(
       crossAxisAlignment: bandView || stage == "Ruhrpott Stage"
           ? CrossAxisAlignment.start
@@ -130,7 +127,7 @@ class _EventDescription extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Text(
-          '$bandname',
+          bandname,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
@@ -148,7 +145,7 @@ class _EventDescription extends StatelessWidget {
           ),
         ),
         Text(
-          '$stage',
+          stage,
           style: const TextStyle(
             fontSize: 12.0,
             color: Colors.black87,

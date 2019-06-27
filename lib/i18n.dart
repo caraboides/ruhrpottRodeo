@@ -2,6 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+const timeFormatString = 'HH:mm';
+const dateTimeFormatString = 'E HH:mm';
+
 class AppLocalizations {
   final String dayOne;
   final String dayTwo;
@@ -15,8 +18,11 @@ class AppLocalizations {
   final String removeEventFromSchedule;
   final String locale;
   final String eventDetailsHeader;
+  final String eventNotificationFormat;
+  // final DateFormat timeFormat;
+  // final DateFormat dateTimeFormat;
 
-  const AppLocalizations({
+  AppLocalizations({
     this.dayOne,
     this.dayTwo,
     this.dayThree,
@@ -29,9 +35,20 @@ class AppLocalizations {
     this.removeEventFromSchedule,
     this.locale,
     this.eventDetailsHeader,
-  });
+    this.eventNotificationFormat,
+  }) /*: TODO(SF) why does this not work?
+        this.timeFormat = DateFormat(timeFormatString, locale),
+        this.dateTimeFormat = DateFormat(dateTimeFormatString, locale)*/
+  ;
 
-  DateFormat format(formatString) => DateFormat(formatString, locale);
+  DateFormat get timeFormat => DateFormat(timeFormatString, locale);
+  DateFormat get dateTimeFormat => DateFormat(dateTimeFormatString, locale);
+
+  String eventNotification(String bandName, DateTime time, String stage) =>
+      eventNotificationFormat
+          .replaceAll('{band}', bandName)
+          .replaceAll('{time}', timeFormat.format(time))
+          .replaceAll('{stage}', stage);
 
   static const delegate = AppLocalizationsDelegate();
 
@@ -56,7 +73,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   bool shouldReload(AppLocalizationsDelegate old) => false;
 }
 
-const _de = AppLocalizations(
+final _de = AppLocalizations(
   dayOne: 'Tag 1',
   dayTwo: 'Tag 2',
   dayThree: 'Tag 3',
@@ -69,9 +86,10 @@ const _de = AppLocalizations(
   removeEventFromSchedule: 'Entferne Auftritt vom Plan',
   locale: 'de_DE',
   eventDetailsHeader: 'BAND DETAILS',
+  eventNotificationFormat: '{band} spielen um {time} auf der {stage}!',
 );
 
-const _en = AppLocalizations(
+final _en = AppLocalizations(
   dayOne: 'Day 1',
   dayTwo: 'Day 2',
   dayThree: 'Day 3',
@@ -84,4 +102,5 @@ const _en = AppLocalizations(
   removeEventFromSchedule: 'Remove gig from schedule',
   locale: 'en_US',
   eventDetailsHeader: 'BAND DETAILS',
+  eventNotificationFormat: '{band} plays at {time} on the {stage}!',
 );

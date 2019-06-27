@@ -7,6 +7,7 @@ import 'home.dart';
 import 'i18n.dart';
 import 'my_schedule.dart';
 import 'drive.dart';
+import 'notifications.dart';
 import 'schedule.dart';
 
 void main() {
@@ -19,6 +20,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    initializeNotifications();
     return ScheduleProvider(
       child: MaterialApp(
         title: 'Ruhrpott Rodeo',

@@ -4,9 +4,18 @@ import 'dart:io';
 import 'package:optional/optional_internal.dart';
 import 'package:path_provider/path_provider.dart';
 
+String directory;
+
+Future<String> _getDirectory() async {
+  if (directory == null) {
+    directory = (await getApplicationDocumentsDirectory()).path;
+  }
+  return directory;
+}
+
 Future<File> _getFileHandle(String fileName) async {
-  final directory = await getApplicationDocumentsDirectory();
-  return File('${directory.path}/$fileName');
+  final directory = await _getDirectory();
+  return File('$directory/$fileName');
 }
 
 Future<Optional<dynamic>> loadJson(String fileName) async {
