@@ -87,6 +87,8 @@ class ScheduleProviderState extends State<ScheduleProvider> {
   /// List of Items
   List<Event> _events = <Event>[];
 
+
+
   @override
   void initState() {
     super.initState();

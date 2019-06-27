@@ -25,3 +25,18 @@ class Faq {
     this.answer,
   });
 }
+
+class BandData {
+  final String id;
+  final String name;
+  final String spotify;
+  final String image;
+  final String text;
+  BandData({
+    this.id,
+    this.name,
+    this.spotify,
+    this.image,
+    this.text,
+  });
+}
