@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AppLocalizations {
   final String dayOne;
@@ -12,6 +13,7 @@ class AppLocalizations {
   final String faq;
   final String addEventToSchedule;
   final String removeEventFromSchedule;
+  final String locale;
 
   const AppLocalizations({
     this.dayOne,
@@ -24,7 +26,10 @@ class AppLocalizations {
     this.faq,
     this.addEventToSchedule,
     this.removeEventFromSchedule,
+    this.locale,
   });
+
+  DateFormat format(formatString) => DateFormat(formatString, locale);
 
   static const delegate = AppLocalizationsDelegate();
 
@@ -60,6 +65,7 @@ const _de = AppLocalizations(
   faq: 'FAQ',
   addEventToSchedule: 'Füge Auftritt zum Plan hinzu',
   removeEventFromSchedule: 'Entferne Auftritt vom Plan',
+  locale: 'de_DE',
 );
 
 const _en = AppLocalizations(
@@ -73,4 +79,5 @@ const _en = AppLocalizations(
   faq: 'FAQ',
   addEventToSchedule: 'Add gig to schedule',
   removeEventFromSchedule: 'Remove gig from schedule',
+  locale: 'en_US',
 );

@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:ruhrpott_rodeo/i18n.dart';
 import 'model.dart';
 
 typedef EventFilter = List<Event> Function(BuildContext context);
 
-var formatter = new DateFormat('HH:mm');
+const timeFormat = 'HH:mm';
+const dateTimeFormat = 'E HH:mm';
 
 class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
   final Map<String, bool> likedEvents;
   final ValueChanged<String> toggleEvent;
-  final bool stageview;
+  final bool bandView;
 
   const EventListView({
     Key key,
     this.eventFilter,
     this.likedEvents,
     this.toggleEvent,
-    this.stageview,
+    this.bandView,
   }) : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class EventListView extends StatelessWidget {
                   start: event.start,
                   stage: event.stage,
                   toggleEvent: () => toggleEvent(event.id),
-                  stageview: stageview,
+                  bandView: bandView,
                 ))
             .toList(),
       ).toList(),
@@ -49,7 +49,7 @@ class CustomListItemTwo extends StatelessWidget {
     this.start,
     this.stage,
     this.toggleEvent,
-    this.stageview,
+    this.bandView,
   }) : super(key: key);
 
   final bool isLiked;
@@ -57,7 +57,7 @@ class CustomListItemTwo extends StatelessWidget {
   final DateTime start;
   final String stage;
   final VoidCallback toggleEvent;
-  final bool stageview;
+  final bool bandView;
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +82,7 @@ class CustomListItemTwo extends StatelessWidget {
                 bandname: bandname,
                 start: start,
                 stage: stage,
-                stageview: stageview,
-
+                bandView: bandView,
               ),
             ),
           )
@@ -99,18 +98,22 @@ class _EventDescription extends StatelessWidget {
     this.bandname,
     this.start,
     this.stage,
-    this.stageview
+    this.bandView,
   }) : super(key: key);
 
   final String bandname;
   final DateTime start;
   final String stage;
-  final bool stageview;
+  final bool bandView;
 
   @override
   Widget build(BuildContext context) {
+    final i18n = AppLocalizations.of(context);
+    final formatter = i18n.format(bandView ? dateTimeFormat : timeFormat);
     return Column(
-      crossAxisAlignment: !stageview||stage=="Ruhrpott Stage"?CrossAxisAlignment.start:CrossAxisAlignment.end,
+      crossAxisAlignment: bandView || stage == "Ruhrpott Stage"
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Text(

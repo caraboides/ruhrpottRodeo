@@ -42,12 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
     _saveLikedEvents();
   }
 
-  Widget _buildEventList(EventFilter eventFilter, {bool stageview = true}) {
+  Widget _buildEventList(EventFilter eventFilter, {bool bandView = false}) {
     return EventListView(
       eventFilter: eventFilter,
       likedEvents: _likedEvents,
       toggleEvent: _toggleEvent,
-      stageview: stageview,
+      bandView: bandView,
     );
   }
 
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: TabBarView(
           children: [
-            _buildEventList(Schedule.allBandsOf, stageview: false),
+            _buildEventList(Schedule.allBandsOf, bandView: true),
             _buildEventList(Schedule.firstDayOf),
             _buildEventList(Schedule.secondDayOf),
             _buildEventList(Schedule.thirdDayOf),
