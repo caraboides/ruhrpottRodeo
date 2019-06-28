@@ -66,14 +66,14 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   @override
   Future<AppLocalizations> load(Locale locale) {
     return SynchronousFuture<AppLocalizations>(
-        locale.languageCode == 'de' ? _de : _en);
+        locale.languageCode == 'de' ? de : en);
   }
 
   @override
   bool shouldReload(AppLocalizationsDelegate old) => false;
 }
 
-final _de = AppLocalizations(
+final de = AppLocalizations(
   dayOne: 'Tag 1',
   dayTwo: 'Tag 2',
   dayThree: 'Tag 3',
@@ -89,7 +89,7 @@ final _de = AppLocalizations(
   eventNotificationFormat: '{band} spielen um {time} auf der {stage}!',
 );
 
-final _en = AppLocalizations(
+final en = AppLocalizations(
   dayOne: 'Day 1',
   dayTwo: 'Day 2',
   dayThree: 'Day 3',

@@ -7,7 +7,7 @@ typedef EventFilter = List<Event> Function(BuildContext context);
 
 class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
-  final Map<String, bool> likedEvents;
+  final MySchedule mySchedule;
   final ValueChanged<Event> toggleEvent;
   final bool bandView;
   final ValueChanged<Event> openEventDetails;
@@ -15,7 +15,7 @@ class EventListView extends StatelessWidget {
   const EventListView({
     Key key,
     this.eventFilter,
-    this.likedEvents,
+    this.mySchedule,
     this.toggleEvent,
     this.bandView,
     this.openEventDetails,
@@ -23,26 +23,32 @@ class EventListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var items = <Widget>[Center(
-      child: Card(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[Center(
-            child: new WeatherWidget(date:"foo"),
-          )],
+    var items = <Widget>[
+      Center(
+        child: Card(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Center(
+                child: new WeatherWidget(date: "foo"),
+              )
+            ],
+          ),
         ),
-      ),
-    )];
-    items.addAll(eventFilter(context).map((event) => CustomListItemTwo(
-    isLiked: likedEvents[event.id] ?? false,
-    bandname: event.bandName,
-    start: event.start,
-    stage: event.stage,
-    toggleEvent: () => toggleEvent(event),
-    bandView: bandView,
-    openEventDetails: () => openEventDetails(event),
-    )).toList());
+      )
+    ];
+    items.addAll(eventFilter(context)
+        .map((event) => CustomListItemTwo(
+              isLiked: mySchedule.isEventLiked(event.id),
+              bandname: event.bandName,
+              start: event.start,
+              stage: event.stage,
+              toggleEvent: () => toggleEvent(event),
+              bandView: bandView,
+              openEventDetails: () => openEventDetails(event),
+            ))
+        .toList());
     return ListView(
       children: ListTile.divideTiles(
         context: context,

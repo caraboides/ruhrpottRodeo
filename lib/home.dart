@@ -1,7 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'app_storage.dart' as appStorage;
-import 'band.dart';
 import 'event_detail_view.dart';
 import 'event_list_view.dart';
 import 'i18n.dart';
@@ -18,34 +19,63 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Map<String, bool> _likedEvents = {};
+  MySchedule _mySchedule = MySchedule();
+  Timer _debounce;
 
   @override
   void initState() {
     super.initState();
-    _loadLikedEvents();
+    _loadMySchedule();
   }
 
-  void _loadLikedEvents() async {
+  void _loadMySchedule() async {
     final Map<String, dynamic> json =
         (await appStorage.loadJson(_myScheduleFileName))
-            .orElse(<String, bool>{});
+            .orElse(<String, int>{});
     setState(() {
-      _likedEvents = json.cast<String, bool>();
+      _mySchedule = MySchedule(json.cast<String, int>());
+    });
+    _checkScheduledEventNotifications();
+  }
+
+  void _saveMySchedule() async {
+    if (_debounce?.isActive ?? false) {
+      _debounce.cancel();
+    }
+    _debounce = Timer(const Duration(milliseconds: 200), () {
+      appStorage.storeJson(_myScheduleFileName, _mySchedule.toJson());
     });
   }
 
-  void _saveLikedEvents() async {
-    appStorage.storeJson(_myScheduleFileName, _likedEvents);
+  void _checkScheduledEventNotifications() {
+    final i18n = AppLocalizations.of(context);
+    final now = DateTime.now();
+    final scheduledEvents = <int, Event>{};
+    Schedule.allBandsOf(context).forEach((event) {
+      _mySchedule.getEventNotificationId(event.id).ifPresent((notificationId) {
+        if (event.start.isAfter(now)) {
+          scheduledEvents[notificationId] = event;
+        }
+      });
+    });
+    verifyScheduledEventNotifications(i18n, scheduledEvents);
   }
 
-  void _toggleEvent(event) {
-    this.setState(() {
-      _likedEvents[event.id] = !(_likedEvents[event.id] ?? false);
-      // TODO(SF) add/remove schedule for event - plausibility checks for all liked bands on startup
-      scheduleNotificationForEvent(AppLocalizations.of(context), event);
-    });
-    _saveLikedEvents();
+  Future<void> _toggleEvent(event) async {
+    _mySchedule.toggleEvent(
+      event.id,
+      onRemove: cancelNotification,
+      getValueToInsert: () async {
+        return event.start.isAfter(DateTime.now())
+            ? await scheduleNotificationForEvent(
+                AppLocalizations.of(context), event)
+            : 0;
+      },
+      onUpdate: () {
+        this.setState(() {});
+        _saveMySchedule();
+      },
+    );
   }
 
   void _openEventDetails(Event event) {
@@ -56,18 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildEventList(EventFilter eventFilter, {bool bandView = false}) {
-    return
-      EventListView(
-        eventFilter: eventFilter,
-        likedEvents: _likedEvents,
-        toggleEvent: _toggleEvent,
-        bandView: bandView,
-        openEventDetails: _openEventDetails,
-      );
-  }
-
-  void foo() {
-    ;
+    return EventListView(
+      eventFilter: eventFilter,
+      mySchedule: _mySchedule,
+      toggleEvent: _toggleEvent,
+      bandView: bandView,
+      openEventDetails: _openEventDetails,
+    );
   }
 
   @override
