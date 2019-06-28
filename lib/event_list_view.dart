@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ruhrpott_rodeo/i18n.dart';
+import 'package:ruhrpott_rodeo/weather.dart';
 import 'model.dart';
 
 typedef EventFilter = List<Event> Function(BuildContext context);
@@ -22,20 +23,30 @@ class EventListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var items = <Widget>[Center(
+      child: Card(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[Center(
+            child: new WeatherWidget(date:"foo"),
+          )],
+        ),
+      ),
+    )];
+    items.addAll(eventFilter(context).map((event) => CustomListItemTwo(
+    isLiked: likedEvents[event.id] ?? false,
+    bandname: event.bandName,
+    start: event.start,
+    stage: event.stage,
+    toggleEvent: () => toggleEvent(event),
+    bandView: bandView,
+    openEventDetails: () => openEventDetails(event),
+    )).toList());
     return ListView(
       children: ListTile.divideTiles(
         context: context,
-        tiles: eventFilter(context)
-            .map((event) => CustomListItemTwo(
-                  isLiked: likedEvents[event.id] ?? false,
-                  bandname: event.bandName,
-                  start: event.start,
-                  stage: event.stage,
-                  toggleEvent: () => toggleEvent(event),
-                  bandView: bandView,
-                  openEventDetails: () => openEventDetails(event),
-                ))
-            .toList(),
+        tiles: items,
       ).toList(),
     );
   }

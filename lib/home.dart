@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_storage.dart' as appStorage;
+import 'band.dart';
 import 'event_detail_view.dart';
 import 'event_list_view.dart';
 import 'i18n.dart';
@@ -55,13 +56,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildEventList(EventFilter eventFilter, {bool bandView = false}) {
-    return EventListView(
-      eventFilter: eventFilter,
-      likedEvents: _likedEvents,
-      toggleEvent: _toggleEvent,
-      bandView: bandView,
-      openEventDetails: _openEventDetails,
-    );
+    return
+      EventListView(
+        eventFilter: eventFilter,
+        likedEvents: _likedEvents,
+        toggleEvent: _toggleEvent,
+        bandView: bandView,
+        openEventDetails: _openEventDetails,
+      );
+  }
+
+  void foo() {
+    ;
   }
 
   @override

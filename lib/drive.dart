@@ -37,7 +37,7 @@ class Drive extends StatelessWidget {
         title: Text('Anfahrt'),
       ),
       body: Center(
-        child:  WebView(initialUrl: url,)
+        child:  WebView(initialUrl: url,javascriptMode: JavascriptMode.unrestricted, )
       ),
     );
   }

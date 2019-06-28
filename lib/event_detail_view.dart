@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:optional/optional_internal.dart';
 import 'package:ruhrpott_rodeo/i18n.dart';
 
+import 'band.dart';
 import 'model.dart';
 
 class EventDetailView extends StatelessWidget {
@@ -11,6 +13,7 @@ class EventDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
+    final Optional<BandData> data = Bands.of(context,event.id);
     return Scaffold(
       appBar: AppBar(
         title: Text(i18n.eventDetailsHeader,
@@ -21,9 +24,15 @@ class EventDetailView extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Text(event.bandName),
-          Text(event.description ?? ''),
-          Image.asset('assets/app_logo-1024.png'),
+          Text(event.bandName,style: TextStyle(
+            fontFamily: 'Beer Money',
+            fontSize: 28,
+          )),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child:  Text(data.map((a)=>a.text).orElse("Sorry no Infos")),
+          ),
+          data.map((d) => Image.network(d.image)).orElse(Image.asset("")),
         ],
       ),
     );

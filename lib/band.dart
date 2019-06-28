@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:optional/optional_internal.dart';
 import 'model.dart';
 
 class Bands extends InheritedWidget {
@@ -18,9 +19,17 @@ class Bands extends InheritedWidget {
   bool updateShouldNotify(Bands oldWidget) => oldWidget.bands != bands;
 
 
-  static BandData of(BuildContext context,String id) {
-    Bands schedule = context.inheritFromWidgetOfExactType(Bands);
-    return schedule.bands.first;
+  static Optional<BandData> of(BuildContext context,String id) {
+    Bands data = context.inheritFromWidgetOfExactType(Bands);
+    return filter(data.bands,id);
+  }
+
+  static Optional<BandData> filter(List<BandData> bands,String id) {
+    try {
+      return Optional.ofNullable(bands.where((b)=> b.id==id).first);
+    } catch(e) {
+      return Optional.empty();
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ruhrpott_rodeo/faq.dart';
 
+import 'band.dart';
 import 'home.dart';
 import 'i18n.dart';
 import 'my_schedule.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     initializeNotifications();
     return ScheduleProvider(
-      child: MaterialApp(
+      child: BandsProvider(
+        child: MaterialApp(
         title: 'Ruhrpott Rodeo',
         theme: ThemeData(
           primarySwatch: Colors.deepOrange,
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
           'drive': (context) => Drive(),
           'faq': (context) => FAQ(),
         },
+      ),
       ),
     );
   }
