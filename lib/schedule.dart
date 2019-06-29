@@ -13,10 +13,10 @@ class Schedule extends InheritedWidget {
 
   final List<Event> events;
 
-  static List<T> sort<T>(Iterable<T> list,int compare(T a, T b)) {
-      List<T> willBeSorted = List.from(list);
-      willBeSorted.sort(compare);
-      return willBeSorted;
+  static List<T> sort<T>(Iterable<T> list, int compare(T a, T b)) {
+    List<T> willBeSorted = List.from(list);
+    willBeSorted.sort(compare);
+    return willBeSorted;
   }
 
   static List<Event> of(BuildContext context) {
@@ -25,19 +25,22 @@ class Schedule extends InheritedWidget {
   }
 
   static List<Event> allBandsOf(BuildContext context) {
-    return sort(of(context),(a,b) => a.bandName.compareTo(b.bandName));
+    return sort(of(context), (a, b) => a.bandName.compareTo(b.bandName));
   }
 
   static List<Event> firstDayOf(BuildContext context) {
-    return sort(of(context).where((item) => item.start.day==5),(a,b) => a.start.compareTo(b.start));
+    return sort(of(context).where((item) => item.start.day == 5),
+        (a, b) => a.start.compareTo(b.start));
   }
 
   static List<Event> secondDayOf(BuildContext context) {
-    return sort(of(context).where((item) => item.start.day==6),(a,b) => a.start.compareTo(b.start));
+    return sort(of(context).where((item) => item.start.day == 6),
+        (a, b) => a.start.compareTo(b.start));
   }
 
   static List<Event> thirdDayOf(BuildContext context) {
-    return sort(of(context).where((item) => item.start.day==7),(a,b) => a.start.compareTo(b.start));
+    return sort(of(context).where((item) => item.start.day == 7),
+        (a, b) => a.start.compareTo(b.start));
   }
 
   @override
@@ -66,14 +69,15 @@ class ScheduleProviderState extends State<ScheduleProvider> {
   parseEvents(List<dynamic> json) {
     return json
         .expand<Event>((stageDay) => stageDay['timeSlots']
-        .where((entry) => !entry['placeholder'])
-        .map<Event>((entry) => buildEvent(stageDay, entry))
-        .toList())
+            .where((entry) => !entry['placeholder'])
+            .map<Event>((entry) => buildEvent(stageDay, entry))
+            .toList())
         .toList();
   }
 
   Future<List<Event>> loadRemoteData() async {
-    final response = await http.get('https://ruhrpott-rodeo.app-domain.de/app/days');
+    final response =
+        await http.get('https://ruhrpott-rodeo.app-domain.de/app/days');
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON.
       final List<dynamic> json = jsonDecode(response.body);
@@ -83,11 +87,8 @@ class ScheduleProviderState extends State<ScheduleProvider> {
     }
   }
 
-
   /// List of Items
   List<Event> _events = <Event>[];
-
-
 
   @override
   void initState() {

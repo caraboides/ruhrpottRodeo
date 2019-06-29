@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ruhrpott_rodeo/openWeather.dart';
+
+import 'openWeather.dart';
 
 class WeatherWidget extends StatelessWidget {
   final Future<List<Weather>> weatherFuture;

@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:ruhrpott_rodeo/model.dart';
 
 import 'menu.dart';
+import 'model.dart';
 
 class FAQ extends StatelessWidget {
   parseFaqs(List<dynamic> json) {

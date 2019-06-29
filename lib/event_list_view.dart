@@ -1,52 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:ruhrpott_rodeo/i18n.dart';
-import 'package:ruhrpott_rodeo/weather.dart';
+
+import 'i18n.dart';
 import 'model.dart';
+import 'my_schedule.dart';
 
 typedef EventFilter = List<Event> Function(BuildContext context);
 
 class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
-  final MySchedule mySchedule;
-  final ValueChanged<Event> toggleEvent;
   final bool bandView;
   final ValueChanged<Event> openEventDetails;
 
   const EventListView({
     Key key,
     this.eventFilter,
-    this.mySchedule,
-    this.toggleEvent,
     this.bandView,
     this.openEventDetails,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final myScheduleController = MyScheduleController.of(context);
+    final i18n = AppLocalizations.of(context);
     final items = eventFilter(context)
         .map((event) => CustomListItemTwo(
-              isLiked: mySchedule.isEventLiked(event.id),
+              isLiked: myScheduleController.mySchedule.isEventLiked(event.id),
               bandname: event.bandName,
               start: event.start,
               stage: event.stage,
-              toggleEvent: () => toggleEvent(event),
+              toggleEvent: () => myScheduleController.toggleEvent(i18n, event),
               bandView: bandView,
               openEventDetails: () => openEventDetails(event),
             ))
         .toList();
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        WeatherWidget(date: "foo"),
-        Expanded(
-          child: ListView(
-            children: ListTile.divideTiles(
-              context: context,
-              tiles: items,
-            ).toList(),
-          ),
-        ),
-      ],
+    return Expanded(
+      child: ListView(
+        children: ListTile.divideTiles(
+          context: context,
+          tiles: items,
+        ).toList(),
+      ),
     );
   }
 }

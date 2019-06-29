@@ -73,4 +73,8 @@ class MySchedule {
   }
 
   Map<String, int> toJson() => _mySchedule;
+
+  MySchedule createCopy() => MySchedule(_mySchedule);
+
+  bool get isEmpty => _mySchedule.isEmpty;
 }
