@@ -241,8 +241,8 @@ class WeatherStation {
   Future<Weather> currentWeather() async {
     try {
       Map<String, dynamic> currentWeather =
-      await _requestOpenWeatherAPI(WEATHER);
-      return new Weather(currentWeather);
+          await _requestOpenWeatherAPI(WEATHER);
+      return Weather(currentWeather);
     } catch (exception) {
       print(exception);
     }
@@ -253,12 +253,12 @@ class WeatherStation {
   /// Result is JSON.
   /// For API documentation, see: https://openweathermap.org/forecast5
   Future<List<Weather>> fiveDayForecast() async {
-    List<Weather> forecasts = new List<Weather>();
+    List<Weather> forecasts = List<Weather>();
     try {
       Map<String, dynamic> jsonForecasts =
-      await _requestOpenWeatherAPI(FORECAST);
+          await _requestOpenWeatherAPI(FORECAST);
       List<dynamic> forecastsJson = jsonForecasts['list'];
-      forecasts = forecastsJson.map((w) => new Weather(w)).toList();
+      forecasts = forecastsJson.map((w) => Weather(w)).toList();
     } catch (exception) {
       print(exception);
     }
@@ -266,31 +266,30 @@ class WeatherStation {
   }
 
   Future<Map<String, dynamic>> _requestOpenWeatherAPI(String tag) async {
-
     /// Check if device is allowed to get location
-      /// Build HTTP get url by passing the required parameters
-      String url = 'http://api.openweathermap.org/data/2.5/' +
-          '$tag?' +
-          'lat=51.6082823&' +
-          'lon=6.8409733&' +
-          'appid=$_apiKey';
+    /// Build HTTP get url by passing the required parameters
+    String url = 'http://api.openweathermap.org/data/2.5/' +
+        '$tag?' +
+        'lat=51.6082823&' +
+        'lon=6.8409733&' +
+        'appid=$_apiKey';
 
-      /// Send HTTP get response with the url
-      http.Response response = await http.get(url);
+    /// Send HTTP get response with the url
+    http.Response response = await http.get(url);
 
-      /// Perform error checking on response:
-      /// Status code 200 means everything went well
-      if (response.statusCode == 200) {
-        Map<String, dynamic> jsonBody = json.decode(response.body);
-        return jsonBody;
-      }
+    /// Perform error checking on response:
+    /// Status code 200 means everything went well
+    if (response.statusCode == 200) {
+      Map<String, dynamic> jsonBody = json.decode(response.body);
+      return jsonBody;
+    }
 
-      /// The API key is invalid, the API may be down
-      /// or some other unspecified error could occur.
-      /// The concrete error should be clear from the HTTP response body.
-      else {
-        throw new OpenWeatherAPIException(
-            "OpenWeather API Exception: ${response.body}");
-      }
+    /// The API key is invalid, the API may be down
+    /// or some other unspecified error could occur.
+    /// The concrete error should be clear from the HTTP response body.
+    else {
+      throw new OpenWeatherAPIException(
+          "OpenWeather API Exception: ${response.body}");
+    }
   }
 }

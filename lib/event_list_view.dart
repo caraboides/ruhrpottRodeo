@@ -23,22 +23,7 @@ class EventListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var items = <Widget>[
-      Center(
-        child: Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Center(
-                child: new WeatherWidget(date: "foo"),
-              )
-            ],
-          ),
-        ),
-      )
-    ];
-    items.addAll(eventFilter(context)
+    final items = eventFilter(context)
         .map((event) => CustomListItemTwo(
               isLiked: mySchedule.isEventLiked(event.id),
               bandname: event.bandName,
@@ -48,12 +33,20 @@ class EventListView extends StatelessWidget {
               bandView: bandView,
               openEventDetails: () => openEventDetails(event),
             ))
-        .toList());
-    return ListView(
-      children: ListTile.divideTiles(
-        context: context,
-        tiles: items,
-      ).toList(),
+        .toList();
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        WeatherWidget(date: "foo"),
+        Expanded(
+          child: ListView(
+            children: ListTile.divideTiles(
+              context: context,
+              tiles: items,
+            ).toList(),
+          ),
+        ),
+      ],
     );
   }
 }
