@@ -32,7 +32,7 @@ Future<Optional<dynamic>> loadJson(String fileName) async {
   return Optional.empty();
 }
 
-void storeJson(String fileName, dynamic json) async {
+Future<void> storeJson(String fileName, dynamic json) async {
   try {
     final file = await _getFileHandle(fileName);
     final fileContent = jsonEncode(json);

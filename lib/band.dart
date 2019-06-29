@@ -1,12 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:optional/optional_internal.dart';
 import 'model.dart';
 
 class Bands extends InheritedWidget {
-
   Bands({
     Key key,
     @required Widget child,
@@ -18,16 +16,15 @@ class Bands extends InheritedWidget {
   @override
   bool updateShouldNotify(Bands oldWidget) => oldWidget.bands != bands;
 
-
-  static Optional<BandData> of(BuildContext context,String id) {
+  static Optional<BandData> of(BuildContext context, String id) {
     Bands data = context.inheritFromWidgetOfExactType(Bands);
-    return filter(data.bands,id);
+    return filter(data.bands, id);
   }
 
-  static Optional<BandData> filter(List<BandData> bands,String id) {
+  static Optional<BandData> filter(List<BandData> bands, String id) {
     try {
-      return Optional.ofNullable(bands.where((b)=> b.id==id).first);
-    } catch(e) {
+      return Optional.ofNullable(bands.where((b) => b.id == id).first);
+    } catch (e) {
       return Optional.empty();
     }
   }
@@ -47,15 +44,13 @@ class BandsProvider extends StatefulWidget {
 
 class BandsProviderState extends State<BandsProvider> {
   Future<List<BandData>> loadInitialData() async {
-    final List<dynamic> json = jsonDecode(await DefaultAssetBundle.of(context)
-        .loadString("assets/bands.json"));
+    final List<dynamic> json = jsonDecode(
+        await DefaultAssetBundle.of(context).loadString("assets/bands.json"));
     return parseEntries(json);
   }
 
   List<BandData> parseEntries(List<dynamic> json) {
-    return json
-        .map<BandData>((entry) => parse(entry))
-        .toList();
+    return json.map<BandData>((entry) => parse(entry)).toList();
   }
 
   /// List of Items
@@ -78,8 +73,8 @@ class BandsProviderState extends State<BandsProvider> {
       child: widget.child,
     );
   }
-  BandData parse(Map<String, dynamic> entry) =>
-      BandData(
+
+  BandData parse(Map<String, dynamic> entry) => BandData(
         id: entry['id'],
         name: entry['name'],
         image: entry['image'],

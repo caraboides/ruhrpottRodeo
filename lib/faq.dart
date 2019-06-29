@@ -4,16 +4,11 @@ import 'package:ruhrpott_rodeo/model.dart';
 
 import 'menu.dart';
 
-
-
-
 class FAQ extends StatelessWidget {
-
-
-
   parseFaqs(List<dynamic> json) {
     return json
-        .map<Faq>((faq) => Faq(question: faq['question'],answer: faq['answer']))
+        .map<Faq>(
+            (faq) => Faq(question: faq['question'], answer: faq['answer']))
         .toList();
   }
 
@@ -35,29 +30,30 @@ class FAQ extends StatelessWidget {
               fontSize: 26,
             )),
       ),
-      body:FutureBuilder<List<Faq>>(
-       future: data, // a previously-obtained Future<String> or null
-      builder: (BuildContext context, AsyncSnapshot<List<Faq>> list) {
-        switch (list.connectionState) {
-           case ConnectionState.none:
-           case ConnectionState.active:
-           case ConnectionState.waiting:
-             return Container();
-           case ConnectionState.done:
-             if (list.hasError)
-               return Text('Error: ${list.error}');
-             return ListView(
-               children: ListTile.divideTiles(
-                 context: context,
-                 tiles: list.data
-                     .map((faq) => ListTile(title: Text(faq.question),subtitle:Text( faq.answer)))
-                     .toList(),
-               ).toList(),
-             );;
-         }
-         return null; // unreachable
-       },
-    ),
+      body: FutureBuilder<List<Faq>>(
+        future: data, // a previously-obtained Future<String> or null
+        builder: (BuildContext context, AsyncSnapshot<List<Faq>> list) {
+          switch (list.connectionState) {
+            case ConnectionState.done:
+              if (list.hasError) return Text('Error: ${list.error}');
+              return ListView(
+                children: ListTile.divideTiles(
+                  context: context,
+                  tiles: list.data
+                      .map((faq) => ListTile(
+                          title: Text(faq.question),
+                          subtitle: Text(faq.answer)))
+                      .toList(),
+                ).toList(),
+              );
+            case ConnectionState.none:
+            case ConnectionState.active:
+            case ConnectionState.waiting:
+            default:
+              return Container();
+          }
+        },
+      ),
     );
   }
 }
