@@ -8,7 +8,30 @@ import 'model.dart';
 import 'schedule.dart';
 import 'weather.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  final bool favoritesOnly;
+
+  const HomeScreen({this.favoritesOnly = false});
+
+  @override
+  State<StatefulWidget> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool favoritesOnly = false;
+
+  @override
+  void initState() {
+    super.initState();
+    favoritesOnly = widget.favoritesOnly;
+  }
+
+  void _onFavoritesFilterChange(bool newValue) {
+    setState(() {
+      favoritesOnly = newValue;
+    });
+  }
+
   void _openEventDetails(BuildContext context, Event event) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (_) => EventDetailView(event),
@@ -26,6 +49,7 @@ class HomeScreen extends StatelessWidget {
           eventFilter: eventFilter,
           bandView: bandView,
           openEventDetails: (event) => _openEventDetails(context, event),
+          favoritesOnly: favoritesOnly,
         ),
       ],
     );
@@ -52,6 +76,13 @@ class HomeScreen extends StatelessWidget {
                 fontFamily: 'Beer Money',
                 fontSize: 26,
               )),
+          actions: <Widget>[
+            Icon(favoritesOnly ? Icons.favorite : Icons.favorite_border),
+            Switch(
+              value: favoritesOnly,
+              onChanged: _onFavoritesFilterChange,
+            ),
+          ],
         ),
         body: TabBarView(
           children: [

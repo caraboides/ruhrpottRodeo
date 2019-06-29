@@ -9,7 +9,6 @@ import 'i18n.dart';
 import 'initialization.dart';
 import 'drive.dart';
 import 'my_schedule.dart';
-import 'my_schedule_view.dart';
 import 'notifications.dart';
 import 'schedule.dart';
 
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
             routes: {
               'home': (context) => HomeScreen(),
-              'mySchedule': (context) => MyScheduleView(),
+              'mySchedule': (context) => HomeScreen(favoritesOnly: true),
               'drive': (context) => Drive(),
               'faq': (context) => FAQ(),
             },

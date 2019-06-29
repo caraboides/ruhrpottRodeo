@@ -10,12 +10,14 @@ class EventListView extends StatelessWidget {
   final EventFilter eventFilter;
   final bool bandView;
   final ValueChanged<Event> openEventDetails;
+  final bool favoritesOnly;
 
   const EventListView({
     Key key,
     this.eventFilter,
     this.bandView,
     this.openEventDetails,
+    this.favoritesOnly,
   }) : super(key: key);
 
   @override
@@ -23,6 +25,9 @@ class EventListView extends StatelessWidget {
     final myScheduleController = MyScheduleController.of(context);
     final i18n = AppLocalizations.of(context);
     final items = eventFilter(context)
+        .where((event) =>
+            !favoritesOnly ||
+            myScheduleController.mySchedule.isEventLiked(event.id))
         .map((event) => CustomListItemTwo(
               isLiked: myScheduleController.mySchedule.isEventLiked(event.id),
               bandname: event.bandName,
