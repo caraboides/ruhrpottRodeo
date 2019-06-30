@@ -4,6 +4,7 @@ import 'package:optional/optional_internal.dart';
 import 'band.dart';
 import 'i18n.dart';
 import 'model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetailView extends StatelessWidget {
   const EventDetailView(this.event);
@@ -35,6 +36,16 @@ class EventDetailView extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               child: Text(data.map((a) => a.text).orElse(i18n.noInfo)),
             ),
+            data
+                .map<Widget>((d) => RaisedButton(
+                      onPressed: () {
+                        launch(d.spotify);
+                      },
+                      child: Text(
+                        "Play on Spotify",
+                      ),
+                    ))
+                .orElse(Container()),
             //data.map((d) => Image.network(d.image)).orElse(Image.asset("")),
           ],
         ),
