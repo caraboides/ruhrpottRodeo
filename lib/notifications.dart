@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'i18n.dart';
@@ -12,6 +13,7 @@ final androidPlatformChannelSpecifics = AndroidNotificationDetails(
   'Notification to remind of scheduled gigs',
   importance: Importance.Max,
   priority: Priority.High,
+  color: Color(0xdc1f00),
 );
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 int _nextNotificationId = 0;
@@ -27,7 +29,7 @@ void initializeNotifications() {
   });
 
   var initializationSettingsAndroid =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
+      AndroidInitializationSettings('notification_icon');
   var initializationSettings = InitializationSettings(
       initializationSettingsAndroid, IOSInitializationSettings());
   flutterLocalNotificationsPlugin.initialize(initializationSettings,
