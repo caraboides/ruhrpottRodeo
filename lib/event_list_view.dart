@@ -135,7 +135,7 @@ class _EventDescription extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          bandname,
+          bandname.toUpperCase(),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(

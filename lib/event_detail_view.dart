@@ -29,7 +29,7 @@ class EventDetailView extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              event.bandName,
+              event.bandName.toUpperCase(),
               style: theme.textTheme.headline,
             ),
             Padding(
