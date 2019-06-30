@@ -1,4 +1,4 @@
-package com.example.ruhrpott_rodeo
+package foo.caraboides.ruhrpott_rodeo
 
 import android.os.Bundle
 
