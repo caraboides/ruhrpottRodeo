@@ -25,9 +25,9 @@ class Menu extends StatelessWidget {
             onTap: () => navigator.pushReplacementNamed('mySchedule'),
           ),
           ListTile(
-          title: Text(i18n.important, style: textStyle),
-          leading: Icon(Icons.warning),
-          onTap: () => navigator.pushReplacementNamed('important'),
+            title: Text(i18n.important, style: textStyle),
+            leading: Icon(Icons.warning),
+            onTap: () => navigator.pushReplacementNamed('important'),
           ),
           ListTile(
             title: Text(i18n.drive, style: textStyle),
@@ -62,6 +62,8 @@ class Menu extends StatelessWidget {
       );
 
   List<Widget> _buildAboutContent(AppLocalizations i18n) => <Widget>[
+        Text('This is an unofficial app for the Ruhrpott Rodeo Festival'),
+        _buildLink('https://www.ruhrpott-rodeo.de'),
         Text(i18n.aboutCreated),
         Row(
           children: <Widget>[
