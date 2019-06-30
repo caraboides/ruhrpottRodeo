@@ -40,11 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildEventList(BuildContext context, EventFilter eventFilter,
-      {bool bandView = false}) {
+      {String datum, bool bandView = false}) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        WeatherWidget(date: "foo"),
+        if (datum != null) WeatherWidget(datum),
         EventListView(
           eventFilter: eventFilter,
           bandView: bandView,
@@ -87,9 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
         body: TabBarView(
           children: [
             _buildEventList(context, Schedule.allBandsOf, bandView: true),
-            _buildEventList(context, Schedule.firstDayOf),
-            _buildEventList(context, Schedule.secondDayOf),
-            _buildEventList(context, Schedule.thirdDayOf),
+            _buildEventList(context, Schedule.firstDayOf, datum: "2019-07-05T14:00:00.000"),
+            _buildEventList(context, Schedule.secondDayOf, datum: "2019-07-06T14:00:00.000"),
+            _buildEventList(context, Schedule.thirdDayOf, datum: "2019-07-07T14:00:00.000"),
           ],
         ),
       ),

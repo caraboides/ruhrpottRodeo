@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:optional/optional.dart';
 import 'model.dart';
+import 'app_storage.dart' as appStorage;
 
 class Schedule extends InheritedWidget {
   Schedule({
@@ -60,11 +62,18 @@ class ScheduleProvider extends StatefulWidget {
 }
 
 class ScheduleProviderState extends State<ScheduleProvider> {
-  Future<List<Event>> loadInitialData() async {
-    final List<dynamic> json = jsonDecode(await DefaultAssetBundle.of(context)
-        .loadString("assets/initialSchedule.json"));
-    return parseEvents(json);
+  Future<List<Event>> loadInitialData()  {
+    return appStorage.loadJson("Schedule.json").then((onValue){
+      if(onValue.isPresent) {
+        return Future.value(parseEvents(onValue.value));
+      } else {
+        return DefaultAssetBundle.of(context)
+            .loadString("assets/initialSchedule.json").then((v) => Future.value(parseEvents(jsonDecode(v))));
+      }
+    });
   }
+
+
 
   parseEvents(List<dynamic> json) {
     return json
@@ -81,6 +90,7 @@ class ScheduleProviderState extends State<ScheduleProvider> {
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON.
       final List<dynamic> json = jsonDecode(response.body);
+      appStorage.storeJson("Schedule.json", json);
       return parseEvents(json);
     } else {
       return List<Event>();

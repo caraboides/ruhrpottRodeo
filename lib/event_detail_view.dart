@@ -33,7 +33,7 @@ class EventDetailView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Text(data.map((a) => a.text).orElse("Sorry no Infos")),
           ),
-          data.map((d) => Image.network(d.image)).orElse(Image.asset("")),
+          //data.map((d) => Image.network(d.image)).orElse(Image.asset("")),
         ],
       ),
     );
