@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: TabBarView(
           children: [
             _buildEventList(context, Schedule.allBandsOf, bandView: true),
-            _buildEventList(context, Schedule.firstDayOf, datum: "2019-07-05T14:00:00.000"),
+            _buildEventList(context, Schedule.firstDayOf, datum: "2019-07-03T14:00:00.000"),
             _buildEventList(context, Schedule.secondDayOf, datum: "2019-07-06T14:00:00.000"),
             _buildEventList(context, Schedule.thirdDayOf, datum: "2019-07-07T14:00:00.000"),
           ],

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:dcache/dcache.dart';
 
 import 'openWeather.dart';
+
+
+Cache c = new SimpleCache<int,List<Weather>>(storage: new SimpleStorage(size: 1));
 
 class WeatherWidget extends StatelessWidget {
   final Future<List<Weather>> weatherFuture;
@@ -16,10 +20,20 @@ class WeatherWidget extends StatelessWidget {
   static Future<List<Weather>> _loadWeather() {
     WeatherStation weatherStation =
         WeatherStation("4b62a945622a3c28596f5a03a346a0a9");
-    return weatherStation.fiveDayForecast();
+    int currenthour = new DateTime.now().hour;
+    List<Weather> oldValue = c.get(currenthour);
+    if(oldValue!=null) {
+      return Future.value(oldValue);
+    } else {
+      return weatherStation.fiveDayForecast().then((value){
+        c.set(currenthour,value);
+        return Future.value(value);
+      });
+    }
   }
 
   Weather getWeatherForDate(List<Weather> weathers, String date) {
+
     var result = null;
     weathers.forEach((current)  {
       if(current.date.toIso8601String()==date){
