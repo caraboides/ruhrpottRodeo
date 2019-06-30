@@ -38,6 +38,7 @@ class EventDetailView extends StatelessWidget {
             ),
             data
                 .map<Widget>((d) => RaisedButton(
+                      color: theme.accentColor,
                       onPressed: () {
                         launch(d.spotify);
                       },
