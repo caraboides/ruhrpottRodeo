@@ -13,6 +13,7 @@ class AppLocalizations {
   final String schedule;
   final String mySchedule;
   final String drive;
+  final String important;
   final String faq;
   final String addEventToSchedule;
   final String removeEventFromSchedule;
@@ -33,6 +34,7 @@ class AppLocalizations {
     this.schedule,
     this.mySchedule,
     this.drive,
+    this.important,
     this.faq,
     this.addEventToSchedule,
     this.removeEventFromSchedule,
@@ -87,6 +89,7 @@ final de = AppLocalizations(
   schedule: 'Plan',
   mySchedule: 'Mein >Plan',
   drive: 'Anfahrt',
+  important: 'Wichtig',
   faq: 'FAQ',
   addEventToSchedule: 'Füge Auftritt zum Plan hinzu',
   removeEventFromSchedule: 'Entferne Auftritt vom Plan',
@@ -106,6 +109,7 @@ final en = AppLocalizations(
   schedule: 'SCHEDULE',
   mySchedule: 'MY >SCHEDULE',
   drive: 'LOCATION',
+  important: 'IMPORTANT',
   faq: 'FAQ',
   addEventToSchedule: 'Add gig to schedule',
   removeEventFromSchedule: 'Remove gig from schedule',

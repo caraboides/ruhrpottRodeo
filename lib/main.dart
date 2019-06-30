@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ruhrpott_rodeo/important.dart';
 
 import 'band.dart';
 import 'faq.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
               'mySchedule': (context) => HomeScreen(favoritesOnly: true),
               'drive': (context) => Drive(),
               'faq': (context) => FAQ(),
+              'important': (context) => Important(),
             },
           ),
         ),

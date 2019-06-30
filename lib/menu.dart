@@ -25,6 +25,11 @@ class Menu extends StatelessWidget {
             onTap: () => navigator.pushReplacementNamed('mySchedule'),
           ),
           ListTile(
+          title: Text(i18n.important, style: textStyle),
+          leading: Icon(Icons.warning),
+          onTap: () => navigator.pushReplacementNamed('important'),
+          ),
+          ListTile(
             title: Text(i18n.drive, style: textStyle),
             leading: Icon(Icons.map),
             onTap: () => navigator.pushReplacementNamed('drive'),
