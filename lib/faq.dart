@@ -20,15 +20,15 @@ class FAQ extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     Future<List<Faq>> data = loadFaq(context);
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
-        title: Text('FAQ',
-            style: TextStyle(
-              fontFamily: 'Beer Money',
-              fontSize: 26,
-            )),
+        title: Text(
+          'FAQ',
+          style: theme.textTheme.headline,
+        ),
       ),
       body: FutureBuilder<List<Faq>>(
         future: data, // a previously-obtained Future<String> or null
@@ -41,8 +41,11 @@ class FAQ extends StatelessWidget {
                   context: context,
                   tiles: list.data
                       .map((faq) => ListTile(
-                          title: Text(faq.question),
-                          subtitle: Text(faq.answer)))
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
+                            title: Text(faq.question),
+                            subtitle: Text(faq.answer),
+                          ))
                       .toList(),
                 ).toList(),
               );

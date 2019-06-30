@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:ruhrpott_rodeo/i18n.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'menu.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 const String html = '''
 <div itemprop="articleBody">
@@ -26,27 +26,30 @@ const String html = '''
 <p><span style="font-size: 12pt; font-family: tahoma, arial, helvetica, sans-serif;">Unter downloads kannst du eine Anfahrtsskizze herunterladen</span><br><br><span style="font-size: 12pt; font-family: tahoma, arial, helvetica, sans-serif;">Homepage Bahnhof Feldhausen:<a href="http://www.mein-bahnhof.de/feldhausen.html"> http://www.mein-bahnhof.de/feldhausen.html</a></span></p>	</div>
 ''';
 
-
-
 class Drive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final String contentBase64 = base64Encode(const Utf8Encoder().convert(html));
+    final String contentBase64 =
+        base64Encode(const Utf8Encoder().convert(html));
     String url = "data:text/html;base64,$contentBase64";
-    final navigator = Navigator.of(context);
+    final i18n = AppLocalizations.of(context);
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
-        title: Text('Anfahrt'),
+        title: Text(
+          i18n.drive,
+          style: Theme.of(context).textTheme.headline,
+        ),
       ),
       body: Center(
-        child:  WebView(initialUrl: url,javascriptMode: JavascriptMode.unrestricted,
-          navigationDelegate: (NavigationRequest request) {
-            launch(request.url);
-            return NavigationDecision.prevent;
-          },
-        )
-      ),
+          child: WebView(
+        initialUrl: url,
+        javascriptMode: JavascriptMode.unrestricted,
+        navigationDelegate: (NavigationRequest request) {
+          launch(request.url);
+          return NavigationDecision.prevent;
+        },
+      )),
     );
   }
 }

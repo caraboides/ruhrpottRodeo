@@ -85,7 +85,7 @@ class CustomListItemTwo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               IconButton(
-                icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
+                icon: Icon(isLiked ? Icons.star : Icons.star_border),
                 tooltip: isLiked
                     ? i18n.removeEventFromSchedule
                     : i18n.addEventToSchedule,
@@ -132,7 +132,7 @@ class _EventDescription extends StatelessWidget {
       crossAxisAlignment: bandView || stage == "Ruhrpott Stage"
           ? CrossAxisAlignment.start
           : CrossAxisAlignment.end,
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
           bandname,
@@ -142,7 +142,7 @@ class _EventDescription extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+        const SizedBox(height: 4),
         Text(
           '${formatter.format(start.toLocal())}',
           maxLines: 1,
@@ -152,6 +152,7 @@ class _EventDescription extends StatelessWidget {
             color: Colors.black54,
           ),
         ),
+        const SizedBox(height: 2),
         Text(
           stage,
           style: const TextStyle(

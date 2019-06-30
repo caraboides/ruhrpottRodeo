@@ -30,7 +30,26 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             title: 'Ruhrpott Rodeo',
             theme: ThemeData(
-              primarySwatch: Colors.deepOrange,
+              primaryColor: Color(0xFFDE0000),
+              accentColor: Color(0xFFFFA419),
+              //accentColor: Color(0xFFFB9802),
+              textTheme: Typography.blackMountainView.copyWith(
+                headline: TextStyle(
+                  fontFamily: 'Beer Money',
+                  fontSize: 26,
+                  color: Colors.white,
+                ),
+                display1: TextStyle(
+                  fontFamily: 'Beer Money',
+                  fontSize: 28,
+                  color: Colors.black,
+                ),
+                title: TextStyle(
+                  fontFamily: 'Beer Money',
+                  fontSize: 24,
+                  color: Colors.black,
+                ),
+              ),
             ),
             localizationsDelegates: [
               AppLocalizations.delegate,

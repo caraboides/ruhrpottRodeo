@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -71,13 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
               Tab(text: i18n.dayThree),
             ],
           ),
-          title: Text('RUHRPOTT RODEO >',
-              style: TextStyle(
-                fontFamily: 'Beer Money',
-                fontSize: 26,
-              )),
+          title: Text(
+            'RUHRPOTT RODEO >',
+            style: theme.textTheme.headline,
+          ),
           actions: <Widget>[
-            Icon(favoritesOnly ? Icons.favorite : Icons.favorite_border),
+            Icon(favoritesOnly ? Icons.star : Icons.star_border),
             Switch(
               value: favoritesOnly,
               onChanged: _onFavoritesFilterChange,
@@ -87,9 +87,12 @@ class _HomeScreenState extends State<HomeScreen> {
         body: TabBarView(
           children: [
             _buildEventList(context, Schedule.allBandsOf, bandView: true),
-            _buildEventList(context, Schedule.firstDayOf, datum: "2019-07-03T14:00:00.000"),
-            _buildEventList(context, Schedule.secondDayOf, datum: "2019-07-06T14:00:00.000"),
-            _buildEventList(context, Schedule.thirdDayOf, datum: "2019-07-07T14:00:00.000"),
+            _buildEventList(context, Schedule.firstDayOf,
+                datum: "2019-07-03T14:00:00.000"),
+            _buildEventList(context, Schedule.secondDayOf,
+                datum: "2019-07-06T14:00:00.000"),
+            _buildEventList(context, Schedule.thirdDayOf,
+                datum: "2019-07-07T14:00:00.000"),
           ],
         ),
       ),

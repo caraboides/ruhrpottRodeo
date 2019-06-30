@@ -23,6 +23,8 @@ class AppLocalizations {
   final String about;
   final String aboutLicense;
   final String aboutCreated;
+  final String noInfo;
+
   // final DateFormat timeFormat;
   // final DateFormat dateTimeFormat;
 
@@ -44,6 +46,7 @@ class AppLocalizations {
     this.about,
     this.aboutLicense,
     this.aboutCreated,
+    this.noInfo,
   }) /*: TODO(SF) why does this not work?
         this.timeFormat = DateFormat(timeFormatString, locale),
         this.dateTimeFormat = DateFormat(dateTimeFormatString, locale)*/
@@ -86,10 +89,10 @@ final de = AppLocalizations(
   dayTwo: 'Tag 2',
   dayThree: 'Tag 3',
   bands: 'Bands',
-  schedule: 'Plan',
-  mySchedule: 'Mein >Plan',
-  drive: 'Anfahrt',
-  important: 'Wichtig',
+  schedule: 'PLAN',
+  mySchedule: 'MEIN >PLAN',
+  drive: 'ANFAHRT',
+  important: 'WICHTIG',
   faq: 'FAQ',
   addEventToSchedule: 'Füge Auftritt zum Plan hinzu',
   removeEventFromSchedule: 'Entferne Auftritt vom Plan',
@@ -99,6 +102,7 @@ final de = AppLocalizations(
   about: 'ÜBER DIESE APP',
   aboutLicense: 'TODO COPYRIGHT',
   aboutCreated: 'Entwickelt von',
+  noInfo: 'Sorry, keine Infos',
 );
 
 final en = AppLocalizations(
@@ -119,4 +123,5 @@ final en = AppLocalizations(
   about: 'ABOUT',
   aboutLicense: 'TODO COPYRIGHT',
   aboutCreated: 'Created by',
+  noInfo: 'Sorry, no info',
 );
