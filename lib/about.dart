@@ -5,10 +5,32 @@ import 'package:url_launcher/url_launcher.dart';
 import 'menu.dart';
 
 class About extends StatelessWidget {
-  Widget _buildLink(ThemeData theme, String url) => FlatButton(
+  Widget _buildLink(ThemeData theme, String url,
+          {String label, bool shrink: false}) =>
+      FlatButton(
         textColor: theme.accentColor,
-        child: Text(url),
+        child: Text(label ?? url),
         onPressed: () => launch(url),
+        materialTapTargetSize: shrink
+            ? MaterialTapTargetSize.shrinkWrap
+            : MaterialTapTargetSize.padded,
+      );
+
+  Widget _buildCreator(String name, List<Widget> links) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Icon(Icons.stars, color: Colors.black87),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text(name),
+              ),
+              ...links,
+            ],
+          )
+        ],
       );
 
   @override
@@ -23,60 +45,46 @@ class About extends StatelessWidget {
           style: theme.textTheme.display1,
         ),
       ),
-      body: Column(
+      body: ListView(
+        padding: EdgeInsets.all(20),
         children: <Widget>[
-          Text('This is an unofficial app for the Ruhrpott Rodeo Festival'),
-          _buildLink(theme, 'https://www.ruhrpott-rodeo.de'),
+          Text('This is an unofficial app for the Ruhrpott Rodeo Festival:'),
+          Align(
+            alignment: Alignment.center,
+            child: _buildLink(theme, 'https://www.ruhrpott-rodeo.de'),
+          ),
+          Text('Source code can be found under'),
+          Align(
+            alignment: Alignment.center,
+            child: _buildLink(
+                theme, 'https://github.com/caraboides/ruhrpott_rodeo'),
+          ),
+          Divider(),
+          SizedBox(height: 5),
           Text(i18n.aboutCreated),
-          Row(
-            children: <Widget>[
-              Text('*'),
-              Text('CH'),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Text('*'),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Stephanie Freitag:'),
-                  _buildLink(theme, 'https://github.com/strangeAeon'),
-                ],
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Text('*'),
-              Text('DS'),
-            ],
-          ),
-          Text('Other worthy mentions:'),
-          Row(
-            children: <Widget>[
-              Text('*'),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Font "Beer Money" by:'),
-                  _buildLink(theme, 'http://www.rolandhuse.com'),
-                ],
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Text('*'),
-              Text('Wikipedia'),
-            ],
-          ),
-          Text('Recycle your animals!'),
+          SizedBox(height: 10),
+          _buildCreator('Christian Hennig', <Widget>[
+            _buildLink(theme, 'https://github.com/caraboides', shrink: true),
+            _buildLink(theme, 'https://twitter.com/carabiodes',
+                label: '@carabiodes', shrink: true),
+          ]),
+          _buildCreator('Stephanie Freitag', <Widget>[
+            _buildLink(theme, 'https://github.com/strangeAeon', shrink: true),
+          ]),
+          _buildCreator('Daniel Scheibe', <Widget>[]),
+          Divider(),
+          SizedBox(height: 5),
+          _buildCreator('Font "Beer Money" by:', <Widget>[
+            _buildLink(theme, 'http://www.rolandhuse.com', shrink: true),
+          ]),
+          _buildCreator('Wikipedia', <Widget>[]),
+          Divider(),
+          SizedBox(height: 5),
+          Text('Seenotrettung ist kein Verbrechen!'),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Save the oceans:'),
-              _buildLink(theme, 'https://www.example.com'),
+              _buildLink(theme, 'https://sea-watch.org/'),
             ],
           ),
           RaisedButton(
@@ -86,7 +94,7 @@ class About extends StatelessWidget {
             onPressed: () {
               showLicensePage(
                 context: context,
-                applicationName: 'RODEO APP',
+                applicationName: 'RUHRPOTT RODEO APP',
                 applicationVersion: '1.0.0',
                 applicationLegalese: i18n.aboutLicense,
               );
