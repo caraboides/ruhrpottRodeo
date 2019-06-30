@@ -19,6 +19,9 @@ class AppLocalizations {
   final String locale;
   final String eventDetailsHeader;
   final String eventNotificationFormat;
+  final String about;
+  final String aboutLicense;
+  final String aboutCreated;
   // final DateFormat timeFormat;
   // final DateFormat dateTimeFormat;
 
@@ -36,6 +39,9 @@ class AppLocalizations {
     this.locale,
     this.eventDetailsHeader,
     this.eventNotificationFormat,
+    this.about,
+    this.aboutLicense,
+    this.aboutCreated,
   }) /*: TODO(SF) why does this not work?
         this.timeFormat = DateFormat(timeFormatString, locale),
         this.dateTimeFormat = DateFormat(dateTimeFormatString, locale)*/
@@ -87,6 +93,9 @@ final de = AppLocalizations(
   locale: 'de_DE',
   eventDetailsHeader: 'BAND DETAILS',
   eventNotificationFormat: '{band} spielen um {time} auf der {stage}!',
+  about: 'ÜBER DIESE APP',
+  aboutLicense: 'TODO COPYRIGHT',
+  aboutCreated: 'Entwickelt von',
 );
 
 final en = AppLocalizations(
@@ -103,4 +112,7 @@ final en = AppLocalizations(
   locale: 'en_US',
   eventDetailsHeader: 'BAND DETAILS',
   eventNotificationFormat: '{band} plays at {time} on the {stage}!',
+  about: 'ABOUT',
+  aboutLicense: 'TODO COPYRIGHT',
+  aboutCreated: 'Created by',
 );

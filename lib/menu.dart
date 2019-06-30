@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'i18n.dart';
 
@@ -24,7 +25,7 @@ class Menu extends StatelessWidget {
             onTap: () => navigator.pushReplacementNamed('mySchedule'),
           ),
           ListTile(
-            title: Text(i18n.drive),
+            title: Text(i18n.drive, style: textStyle),
             leading: Icon(Icons.map),
             onTap: () => navigator.pushReplacementNamed('drive'),
           ),
@@ -35,9 +36,78 @@ class Menu extends StatelessWidget {
           ),
           AboutListTile(
             icon: Icon(Icons.info),
+            child: Text(i18n.about, style: textStyle),
+            applicationName: 'Ruhrpott Rodeo',
+            applicationVersion: '1.0.0',
+            applicationIcon: Image.asset(
+              'assets/app_logo.png',
+              height: 60,
+            ),
+            applicationLegalese: i18n.aboutLicense,
+            aboutBoxChildren: _buildAboutContent(i18n),
           ),
         ],
       ),
     );
   }
+
+  Widget _buildLink(String url) => FlatButton(
+        child: Text(url),
+        onPressed: () => launch(url),
+      );
+
+  List<Widget> _buildAboutContent(AppLocalizations i18n) => <Widget>[
+        Text(i18n.aboutCreated),
+        Row(
+          children: <Widget>[
+            Text('*'),
+            Text('CH'),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Text('*'),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Stephanie Freitag:'),
+                _buildLink('https://github.com/strangeAeon'),
+              ],
+            ),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Text('*'),
+            Text('DS'),
+          ],
+        ),
+        Text('Other worthy mentions:'),
+        Row(
+          children: <Widget>[
+            Text('*'),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Font "Beer Money" by:'),
+                _buildLink('http://www.rolandhuse.com'),
+              ],
+            ),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Text('*'),
+            Text('Wikipedia'),
+          ],
+        ),
+        Text('Recycle your animals!'),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('Save the oceans:'),
+            _buildLink('https://www.example.com'),
+          ],
+        ),
+      ];
 }
