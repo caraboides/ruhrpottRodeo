@@ -23,6 +23,8 @@ class WeatherWidget extends StatelessWidget {
     int currenthour = new DateTime.now().hour;
     List<Weather> oldValue = c.get(currenthour);
     if(oldValue!=null) {
+      print("Cached");
+
       return Future.value(oldValue);
     } else {
       return weatherStation.fiveDayForecast().then((value){

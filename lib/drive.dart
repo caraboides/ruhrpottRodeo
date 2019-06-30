@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'menu.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 const String html = '''
 <div itemprop="articleBody">
@@ -25,19 +27,25 @@ const String html = '''
 ''';
 
 
+
 class Drive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String contentBase64 = base64Encode(const Utf8Encoder().convert(html));
     String url = "data:text/html;base64,$contentBase64";
-
+    final navigator = Navigator.of(context);
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
         title: Text('Anfahrt'),
       ),
       body: Center(
-        child:  WebView(initialUrl: url,javascriptMode: JavascriptMode.unrestricted, )
+        child:  WebView(initialUrl: url,javascriptMode: JavascriptMode.unrestricted,
+          navigationDelegate: (NavigationRequest request) {
+            launch(request.url);
+            return NavigationDecision.prevent;
+          },
+        )
       ),
     );
   }
