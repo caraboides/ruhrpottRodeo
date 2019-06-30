@@ -20,7 +20,7 @@ class EventDetailView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           i18n.eventDetailsHeader,
-          style: theme.textTheme.headline,
+          style: theme.textTheme.display1,
         ),
       ),
       body: Container(
@@ -30,7 +30,7 @@ class EventDetailView extends StatelessWidget {
           children: <Widget>[
             Text(
               event.bandName,
-              style: theme.textTheme.display1,
+              style: theme.textTheme.headline,
             ),
             Padding(
               padding: const EdgeInsets.all(20),

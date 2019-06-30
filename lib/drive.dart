@@ -38,7 +38,7 @@ class Drive extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           i18n.drive,
-          style: Theme.of(context).textTheme.headline,
+          style: Theme.of(context).textTheme.display1,
         ),
       ),
       body: Center(

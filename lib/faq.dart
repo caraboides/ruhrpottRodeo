@@ -27,7 +27,7 @@ class FAQ extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'FAQ',
-          style: theme.textTheme.headline,
+          style: theme.textTheme.display1,
         ),
       ),
       body: FutureBuilder<List<Faq>>(

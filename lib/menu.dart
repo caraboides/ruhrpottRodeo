@@ -41,83 +41,14 @@ class Menu extends StatelessWidget {
               leading: Icon(Icons.help, color: Colors.black87),
               onTap: () => navigator.pushReplacementNamed('faq'),
             ),
-            AboutListTile(
-              icon: Icon(Icons.info, color: Colors.black87),
-              child: Text(i18n.about, style: theme.textTheme.title),
-              applicationName: 'Ruhrpott Rodeo',
-              applicationVersion: '1.0.0',
-              applicationIcon: Image.asset(
-                'assets/app_logo.png',
-                height: 60,
-              ),
-              applicationLegalese: i18n.aboutLicense,
-              aboutBoxChildren: _buildAboutContent(i18n),
+            ListTile(
+              title: Text(i18n.about, style: theme.textTheme.title),
+              leading: Icon(Icons.info, color: Colors.black87),
+              onTap: () => navigator.pushReplacementNamed('about'),
             ),
           ],
         ),
       ),
     );
   }
-
-  Widget _buildLink(String url) => FlatButton(
-        child: Text(url),
-        onPressed: () => launch(url),
-      );
-
-  List<Widget> _buildAboutContent(AppLocalizations i18n) => <Widget>[
-        Text('This is an unofficial app for the Ruhrpott Rodeo Festival'),
-        _buildLink('https://www.ruhrpott-rodeo.de'),
-        Text(i18n.aboutCreated),
-        Row(
-          children: <Widget>[
-            Text('*'),
-            Text('CH'),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            Text('*'),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Stephanie Freitag:'),
-                _buildLink('https://github.com/strangeAeon'),
-              ],
-            ),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            Text('*'),
-            Text('DS'),
-          ],
-        ),
-        Text('Other worthy mentions:'),
-        Row(
-          children: <Widget>[
-            Text('*'),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Font "Beer Money" by:'),
-                _buildLink('http://www.rolandhuse.com'),
-              ],
-            ),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            Text('*'),
-            Text('Wikipedia'),
-          ],
-        ),
-        Text('Recycle your animals!'),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text('Save the oceans:'),
-            _buildLink('https://www.example.com'),
-          ],
-        ),
-      ];
 }

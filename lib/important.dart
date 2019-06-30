@@ -11,7 +11,7 @@ class Important extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             i18n.important,
-            style: Theme.of(context).textTheme.headline,
+            style: Theme.of(context).textTheme.display1,
           ),
         ),
         body: Center(child: Image.asset("assets/wichtig.jpg")));

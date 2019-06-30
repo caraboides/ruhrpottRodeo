@@ -52,7 +52,6 @@ flutter:
      - assets/initialSchedule.json
      - assets/initialFaq.json
      - assets/bands.json
-     - assets/app_logo.png
      - assets/wichtig.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           title: Text(
             'RUHRPOTT RODEO >',
-            style: theme.textTheme.headline,
+            style: theme.textTheme.display1,
           ),
           actions: <Widget>[
             Icon(favoritesOnly ? Icons.star : Icons.star_border),

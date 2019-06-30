@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:ruhrpott_rodeo/important.dart';
 
+import 'about.dart';
 import 'band.dart';
 import 'faq.dart';
 import 'home.dart';
 import 'i18n.dart';
+import 'important.dart';
 import 'initialization.dart';
 import 'drive.dart';
 import 'my_schedule.dart';
@@ -36,13 +37,13 @@ class MyApp extends StatelessWidget {
               textTheme: Typography.blackMountainView.copyWith(
                 headline: TextStyle(
                   fontFamily: 'Beer Money',
-                  fontSize: 26,
-                  color: Colors.white,
+                  fontSize: 28,
+                  color: Colors.black,
                 ),
                 display1: TextStyle(
                   fontFamily: 'Beer Money',
-                  fontSize: 28,
-                  color: Colors.black,
+                  fontSize: 26,
+                  color: Colors.white,
                 ),
                 title: TextStyle(
                   fontFamily: 'Beer Money',
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
               'drive': (context) => Drive(),
               'faq': (context) => FAQ(),
               'important': (context) => Important(),
+              'about': (context) => About(),
             },
           ),
         ),

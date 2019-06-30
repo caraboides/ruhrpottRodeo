@@ -100,7 +100,7 @@ final de = AppLocalizations(
   eventDetailsHeader: 'BAND DETAILS',
   eventNotificationFormat: '{band} spielen um {time} auf der {stage}!',
   about: 'ÜBER DIESE APP',
-  aboutLicense: 'TODO COPYRIGHT',
+  aboutLicense: 'Copyright 2019 blabla',
   aboutCreated: 'Entwickelt von',
   noInfo: 'Sorry, keine Infos',
 );
@@ -121,7 +121,7 @@ final en = AppLocalizations(
   eventDetailsHeader: 'BAND DETAILS',
   eventNotificationFormat: '{band} plays at {time} on the {stage}!',
   about: 'ABOUT',
-  aboutLicense: 'TODO COPYRIGHT',
+  aboutLicense: 'Copyright 2019 blabla',
   aboutCreated: 'Created by',
   noInfo: 'Sorry, no info',
 );
