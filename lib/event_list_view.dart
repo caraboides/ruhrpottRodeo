@@ -5,8 +5,9 @@ import 'model.dart';
 import 'my_schedule.dart';
 
 typedef EventFilter = List<Event> Function(BuildContext context);
+const double _listItemHeight = 70;
 
-class EventListView extends StatelessWidget {
+class EventListView extends StatefulWidget {
   final EventFilter eventFilter;
   final bool bandView;
   final ValueChanged<Event> openEventDetails;
@@ -21,25 +22,80 @@ class EventListView extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() => EventListViewState();
+}
+
+class EventListViewState extends State<EventListView> {
+  final _scrollController = ScrollController();
+  bool _firstBuild = true;
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(EventListView oldWidget) {
+    if (mounted &&
+        !widget.bandView &&
+        widget.favoritesOnly != oldWidget.favoritesOnly) {
+      _scrollToCurrentBand();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  Iterable<Event> getEvents(MyScheduleController myScheduleController) =>
+      widget.eventFilter(context).where((event) =>
+          !widget.favoritesOnly ||
+          myScheduleController.mySchedule.isEventLiked(event.id));
+
+  void _scrollToCurrentBand(
+      {Duration timeout = const Duration(milliseconds: 50)}) {
+    Future.delayed(timeout, () {
+      if (mounted) {
+        final now = DateTime.now();
+        final index = getEvents(MyScheduleController.of(context))
+            .toList()
+            .indexWhere((event) =>
+                !now.isBefore(event.start) && !now.isAfter(event.end));
+        if (index >= 0) {
+          _scrollController.animateTo(
+            (index - 2) * _listItemHeight,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeIn,
+          );
+        }
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final myScheduleController = MyScheduleController.of(context);
     final i18n = AppLocalizations.of(context);
-    final items = eventFilter(context)
-        .where((event) =>
-            !favoritesOnly ||
-            myScheduleController.mySchedule.isEventLiked(event.id))
+    final now = DateTime.now();
+    final events = getEvents(myScheduleController);
+    final items = events
         .map((event) => CustomListItemTwo(
+              key: Key(event.id),
               isLiked: myScheduleController.mySchedule.isEventLiked(event.id),
               bandname: event.bandName,
               start: event.start,
               stage: event.stage,
               toggleEvent: () => myScheduleController.toggleEvent(i18n, event),
-              bandView: bandView,
-              openEventDetails: () => openEventDetails(event),
+              bandView: widget.bandView,
+              openEventDetails: () => widget.openEventDetails(event),
+              isPlaying: !now.isBefore(event.start) && !now.isAfter(event.end),
             ))
         .toList();
+    if (_firstBuild && !widget.bandView) {
+      _firstBuild = false;
+      _scrollToCurrentBand(timeout: Duration(milliseconds: 200));
+    }
     return Expanded(
       child: ListView(
+        controller: _scrollController,
         children: ListTile.divideTiles(
           context: context,
           tiles: items,
@@ -59,6 +115,7 @@ class CustomListItemTwo extends StatelessWidget {
     this.toggleEvent,
     this.bandView,
     this.openEventDetails,
+    this.isPlaying,
   }) : super(key: key);
 
   final bool isLiked;
@@ -68,41 +125,46 @@ class CustomListItemTwo extends StatelessWidget {
   final VoidCallback toggleEvent;
   final bool bandView;
   final VoidCallback openEventDetails;
+  final bool isPlaying;
 
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
-    return InkWell(
-      onTap: openEventDetails,
-      child: SafeArea(
-        top: false,
-        bottom: false,
-        minimum: EdgeInsets.symmetric(horizontal: 16.0),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          height: 70,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(isLiked ? Icons.star : Icons.star_border),
-                tooltip: isLiked
-                    ? i18n.removeEventFromSchedule
-                    : i18n.addEventToSchedule,
-                onPressed: toggleEvent,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: _EventDescription(
-                    bandname: bandname,
-                    start: start,
-                    stage: stage,
-                    bandView: bandView,
-                  ),
+    final theme = Theme.of(context);
+    return Material(
+      color: isPlaying ? theme.accentColor : theme.canvasColor,
+      child: InkWell(
+        onTap: openEventDetails,
+        child: SafeArea(
+          top: false,
+          bottom: false,
+          minimum: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            height: _listItemHeight,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(isLiked ? Icons.star : Icons.star_border),
+                  tooltip: isLiked
+                      ? i18n.removeEventFromSchedule
+                      : i18n.addEventToSchedule,
+                  onPressed: toggleEvent,
                 ),
-              )
-            ],
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: _EventDescription(
+                      bandname: bandname,
+                      start: start,
+                      stage: stage,
+                      bandView: bandView,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
