@@ -55,12 +55,21 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  int get _initialTab {
+    final now = DateTime.now();
+    if (now.year == 2019 && now.month == 7 && now.day >= 5 && now.day <= 7) {
+      return now.day - 4;
+    }
+    return 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     return DefaultTabController(
       length: 4,
+      initialIndex: _initialTab,
       child: Scaffold(
         drawer: const Menu(),
         appBar: AppBar(
