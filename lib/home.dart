@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'event_detail_view.dart';
@@ -18,12 +20,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Timer _rebuildTimer;
   bool favoritesOnly = false;
 
   @override
   void initState() {
     super.initState();
     favoritesOnly = widget.favoritesOnly;
+    _rebuildTimer = Timer.periodic(Duration(minutes: 5), (_) {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _rebuildTimer.cancel();
+    super.dispose();
   }
 
   void _onFavoritesFilterChange(bool newValue) {
