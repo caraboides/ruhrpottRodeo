@@ -10,7 +10,6 @@ class Menu extends StatelessWidget {
     final i18n = AppLocalizations.of(context);
     final navigator = Navigator.of(context);
     final theme = Theme.of(context);
-    navigator.pu
     return Drawer(
       child: Container(
         color: theme.accentColor,
