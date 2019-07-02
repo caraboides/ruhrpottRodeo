@@ -5,6 +5,17 @@ import 'i18n.dart';
 class Menu extends StatelessWidget {
   const Menu();
 
+  bool _isHomeScreen(Route route) =>
+      route.settings.name == '/' || route.settings.name == 'home';
+
+  void _pushOnHome(NavigatorState navigator, String routeName) {
+    navigator.pop();
+    navigator.pushNamedAndRemoveUntil(
+      routeName,
+      _isHomeScreen,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final i18n = AppLocalizations.of(context);
@@ -18,32 +29,35 @@ class Menu extends StatelessWidget {
             ListTile(
               title: Text(i18n.schedule, style: theme.textTheme.title),
               leading: Icon(Icons.calendar_today, color: Colors.black87),
-              onTap: () => navigator.popAndPushNamed('home'),
+              onTap: () {
+                navigator.popUntil(_isHomeScreen);
+                navigator.pushReplacementNamed('home');
+              },
             ),
             ListTile(
               title: Text(i18n.mySchedule, style: theme.textTheme.title),
               leading: Icon(Icons.star, color: Colors.black87),
-              onTap: () => navigator.popAndPushNamed('mySchedule'),
+              onTap: () => _pushOnHome(navigator, 'mySchedule'),
             ),
             ListTile(
               title: Text(i18n.important, style: theme.textTheme.title),
               leading: Icon(Icons.warning, color: Colors.black87),
-              onTap: () { navigator.popAndPushNamed('important'); },
+              onTap: () => _pushOnHome(navigator, 'important'),
             ),
             ListTile(
               title: Text(i18n.drive, style: theme.textTheme.title),
               leading: Icon(Icons.map, color: Colors.black87),
-              onTap: () => navigator.popAndPushNamed('drive'),
+              onTap: () => _pushOnHome(navigator, 'drive'),
             ),
             ListTile(
               title: Text(i18n.faq, style: theme.textTheme.title),
               leading: Icon(Icons.help, color: Colors.black87),
-              onTap: () => navigator.popAndPushNamed('faq'),
+              onTap: () => _pushOnHome(navigator, 'faq'),
             ),
             ListTile(
               title: Text(i18n.about, style: theme.textTheme.title),
               leading: Icon(Icons.info, color: Colors.black87),
-              onTap: () => navigator.popAndPushNamed('about'),
+              onTap: () => _pushOnHome(navigator, 'about'),
             ),
           ],
         ),

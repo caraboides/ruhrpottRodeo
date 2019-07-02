@@ -53,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
-  Timer _createTimer() => Timer.periodic(Duration(minutes: 1), (_) => _rebuild());
+  Timer _createTimer() =>
+      Timer.periodic(Duration(minutes: 1), (_) => _rebuild());
 
   void _rebuild() {
     if (mounted) {
