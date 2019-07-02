@@ -3,46 +3,61 @@ import 'package:dcache/dcache.dart';
 
 import 'openWeather.dart';
 
+Cache c = SimpleCache<int, List<Weather>>(storage: SimpleStorage(size: 1));
 
-Cache c = new SimpleCache<int,List<Weather>>(storage: new SimpleStorage(size: 1));
-
-class WeatherWidget extends StatelessWidget {
-  final Future<List<Weather>> weatherFuture;
+class WeatherWidget extends StatefulWidget {
   final String datum;
   WeatherWidget(
-    this.datum,{
+    this.datum, {
     Key key,
-  })  : this.weatherFuture = _loadWeather(),
-        super(key: key);
+  }) : super(key: key);
 
+  @override
+  State<StatefulWidget> createState() => _WeatherWidgetState(_loadWeather());
 
-
-  static Future<List<Weather>> _loadWeather() {
+  Future<List<Weather>> _loadWeather() {
     WeatherStation weatherStation =
         WeatherStation("4b62a945622a3c28596f5a03a346a0a9");
-    int currenthour = new DateTime.now().hour;
+    int currenthour = DateTime.now().hour;
     List<Weather> oldValue = c.get(currenthour);
-    if(oldValue!=null) {
+    if (oldValue != null) {
       return Future.value(oldValue);
     } else {
-      return weatherStation.fiveDayForecast().then((value){
-        c.set(currenthour,value);
+      return weatherStation.fiveDayForecast().then((value) {
+        c.set(currenthour, value);
         return Future.value(value);
       });
     }
   }
+}
 
-  Weather getWeatherForDate(List<Weather> weathers, String date) {
+class _WeatherWidgetState extends State<WeatherWidget> {
+  _WeatherWidgetState(this.weatherFuture);
 
-    var result = null;
-    weathers.forEach((current)  {
-      if(current.date.toIso8601String()==date){
-        result=current;
-      };
-    }
-    );
-    return result;
-  }
+  final Future<List<Weather>> weatherFuture;
+
+  Weather getWeatherForDate(List<Weather> weathers, String date) =>
+      weathers.firstWhere(
+        (current) => current.date.toIso8601String() == date,
+        orElse: () => null,
+      );
+
+  Widget _buildWeatherCard(Weather weather) => Card(
+        child: Container(
+          height: 40,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "${weather.temperature.celsius.toStringAsFixed(1)}°C  ${weather.weatherDescription}",
+              ),
+              Image.network(
+                "http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png",
+              ),
+            ],
+          ),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -52,19 +67,8 @@ class WeatherWidget extends StatelessWidget {
         switch (list.connectionState) {
           case ConnectionState.done:
             if (list.hasError) return Text('Error: ${list.error}');
-            Weather weather = getWeatherForDate(list.data,datum);
-            return weather==null?Container():Card(
-                child: Container(
-                height: 40,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                  Text(
-                      "${weather.temperature.celsius.toStringAsFixed(1)}°C  ${weather.weatherDescription}"),
-                  Image.network(
-                      "http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png"),
-                ])),
-            );
+            Weather weather = getWeatherForDate(list.data, widget.datum);
+            return weather == null ? Container() : _buildWeatherCard(weather);
           case ConnectionState.none:
           case ConnectionState.active:
           case ConnectionState.waiting:
