@@ -19,7 +19,7 @@ class HomeScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Timer _rebuildTimer;
   bool favoritesOnly = false;
 
@@ -27,17 +27,38 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     favoritesOnly = widget.favoritesOnly;
-    _rebuildTimer = Timer.periodic(Duration(minutes: 5), (_) {
-      if (mounted) {
-        setState(() {});
-      }
-    });
+    WidgetsBinding.instance.addObserver(this);
+    _rebuildTimer = _createTimer();
   }
 
   @override
   void dispose() {
-    _rebuildTimer.cancel();
+    _rebuildTimer?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.suspending:
+        _rebuildTimer.cancel();
+        break;
+      case AppLifecycleState.resumed:
+        _rebuild();
+        _rebuildTimer = _createTimer();
+        break;
+    }
+  }
+
+  Timer _createTimer() => Timer.periodic(Duration(minutes: 1), (_) => _rebuild());
+
+  void _rebuild() {
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   void _onFavoritesFilterChange(bool newValue) {
