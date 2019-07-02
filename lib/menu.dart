@@ -10,6 +10,7 @@ class Menu extends StatelessWidget {
     final i18n = AppLocalizations.of(context);
     final navigator = Navigator.of(context);
     final theme = Theme.of(context);
+    navigator.pu
     return Drawer(
       child: Container(
         color: theme.accentColor,
@@ -18,32 +19,32 @@ class Menu extends StatelessWidget {
             ListTile(
               title: Text(i18n.schedule, style: theme.textTheme.title),
               leading: Icon(Icons.calendar_today, color: Colors.black87),
-              onTap: () => navigator.pushReplacementNamed('home'),
+              onTap: () => navigator.popAndPushNamed('home'),
             ),
             ListTile(
               title: Text(i18n.mySchedule, style: theme.textTheme.title),
               leading: Icon(Icons.star, color: Colors.black87),
-              onTap: () => navigator.pushReplacementNamed('mySchedule'),
+              onTap: () => navigator.popAndPushNamed('mySchedule'),
             ),
             ListTile(
               title: Text(i18n.important, style: theme.textTheme.title),
               leading: Icon(Icons.warning, color: Colors.black87),
-              onTap: () => navigator.pushReplacementNamed('important'),
+              onTap: () { navigator.popAndPushNamed('important'); },
             ),
             ListTile(
               title: Text(i18n.drive, style: theme.textTheme.title),
               leading: Icon(Icons.map, color: Colors.black87),
-              onTap: () => navigator.pushReplacementNamed('drive'),
+              onTap: () => navigator.popAndPushNamed('drive'),
             ),
             ListTile(
               title: Text(i18n.faq, style: theme.textTheme.title),
               leading: Icon(Icons.help, color: Colors.black87),
-              onTap: () => navigator.pushReplacementNamed('faq'),
+              onTap: () => navigator.popAndPushNamed('faq'),
             ),
             ListTile(
               title: Text(i18n.about, style: theme.textTheme.title),
               leading: Icon(Icons.info, color: Colors.black87),
-              onTap: () => navigator.pushReplacementNamed('about'),
+              onTap: () => navigator.popAndPushNamed('about'),
             ),
           ],
         ),
