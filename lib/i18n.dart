@@ -100,8 +100,8 @@ final de = AppLocalizations(
   eventDetailsHeader: 'BAND DETAILS',
   eventNotificationFormat: '{band} spielen um {time} auf der {stage}!',
   about: 'ÜBER DIESE APP',
-  aboutLicense: 'Copyright 2019 Christian ❤ Stephanie',
-  aboutCreated: 'Entwickelt von',
+  aboutLicense: 'Copyright 2019 Projekt LilaHerz 💜',
+  aboutCreated: 'Entwickelt von Projekt LilaHerz 💜',
   noInfo: 'Sorry, keine Infos',
 );
 
@@ -121,7 +121,7 @@ final en = AppLocalizations(
   eventDetailsHeader: 'BAND DETAILS',
   eventNotificationFormat: '{band} plays at {time} on the {stage}!',
   about: 'ABOUT',
-  aboutLicense: 'Copyright 2019 Christian ❤ Stephanie',
-  aboutCreated: 'Created by',
+  aboutLicense: 'Copyright 2019 Projekt LilaHerz 💜',
+  aboutCreated: 'Created by Projekt LilaHerz 💜',
   noInfo: 'Sorry, no info',
 );
