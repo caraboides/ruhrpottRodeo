@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'i18n.dart';
@@ -61,7 +63,7 @@ class EventListViewState extends State<EventListView> {
                 !now.isBefore(event.start) && !now.isAfter(event.end));
         if (index >= 0) {
           _scrollController.animateTo(
-            (index - 2) * _listItemHeight,
+            max(index - 2, 0) * _listItemHeight,
             duration: Duration(milliseconds: 500),
             curve: Curves.easeIn,
           );
@@ -89,6 +91,23 @@ class EventListViewState extends State<EventListView> {
               isPlaying: !now.isBefore(event.start) && !now.isAfter(event.end),
             ))
         .toList();
+    if (widget.favoritesOnly && items.isEmpty) {
+      return Expanded(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Text(i18n.emptyScheduleHeadline),
+            ),
+            Icon(Icons.star_border),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Text(i18n.emptySchedule),
+            ),
+          ],
+        ),
+      );
+    }
     if (_firstBuild && !widget.bandView) {
       _firstBuild = false;
       _scrollToCurrentBand(timeout: Duration(milliseconds: 200));

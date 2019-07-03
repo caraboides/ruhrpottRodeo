@@ -24,7 +24,8 @@ class AppLocalizations {
   final String aboutLicense;
   final String aboutCreated;
   final String noInfo;
-
+  final String emptyScheduleHeadline;
+  final String emptySchedule;
   // final DateFormat timeFormat;
   // final DateFormat dateTimeFormat;
 
@@ -47,6 +48,8 @@ class AppLocalizations {
     this.aboutLicense,
     this.aboutCreated,
     this.noInfo,
+    this.emptyScheduleHeadline,
+    this.emptySchedule,
   }) /*: TODO(SF) why does this not work?
         this.timeFormat = DateFormat(timeFormatString, locale),
         this.dateTimeFormat = DateFormat(dateTimeFormatString, locale)*/
@@ -101,8 +104,10 @@ final de = AppLocalizations(
   eventNotificationFormat: '{band} spielen um {time} auf der {stage}!',
   about: 'ÜBER DIESE APP',
   aboutLicense: 'Copyright 2019 Projekt LilaHerz 💜',
-  aboutCreated: 'Entwickelt von Projekt LilaHerz 💜',
+  aboutCreated: 'Entwickelt von Projekt LilaHerz',
   noInfo: 'Sorry, keine Infos',
+  emptyScheduleHeadline: 'Magst du keine Musik?',
+  emptySchedule: 'Du hast noch keine Auftritte zu deinem Plan hinzugefügt!',
 );
 
 final en = AppLocalizations(
@@ -122,6 +127,8 @@ final en = AppLocalizations(
   eventNotificationFormat: '{band} plays at {time} on the {stage}!',
   about: 'ABOUT',
   aboutLicense: 'Copyright 2019 Projekt LilaHerz 💜',
-  aboutCreated: 'Created by Projekt LilaHerz 💜',
+  aboutCreated: 'Created by Projekt LilaHerz',
   noInfo: 'Sorry, no info',
+  emptyScheduleHeadline: "Don't you like music?",
+  emptySchedule: 'You did not add any gigs to your schedule yet!',
 );

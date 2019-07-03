@@ -16,10 +16,18 @@ class About extends StatelessWidget {
             : MaterialTapTargetSize.padded,
       );
 
-  Widget _buildCreator(String name, List<Widget> links) => Row(
+  Widget _buildCreator(
+    String name,
+    List<Widget> links, {
+    bool heartIcon = false,
+  }) =>
+      Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Icon(Icons.stars, color: Colors.black87),
+          Icon(
+            heartIcon ? Icons.favorite : Icons.stars,
+            color: heartIcon ? Colors.purple : Colors.black87,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -63,14 +71,22 @@ class About extends StatelessWidget {
           SizedBox(height: 5),
           Text(i18n.aboutCreated),
           SizedBox(height: 10),
-          _buildCreator('Christian Hennig', <Widget>[
-            _buildLink(theme, 'https://github.com/caraboides', shrink: true),
-            _buildLink(theme, 'https://twitter.com/carabiodes',
-                label: '@carabiodes', shrink: true),
-          ]),
-          _buildCreator('Stephanie Freitag', <Widget>[
-            _buildLink(theme, 'https://github.com/strangeAeon', shrink: true),
-          ]),
+          _buildCreator(
+            'Christian Hennig',
+            <Widget>[
+              _buildLink(theme, 'https://github.com/caraboides', shrink: true),
+              _buildLink(theme, 'https://twitter.com/carabiodes',
+                  label: '@carabiodes', shrink: true),
+            ],
+            heartIcon: true,
+          ),
+          _buildCreator(
+            'Stephanie Freitag',
+            <Widget>[
+              _buildLink(theme, 'https://github.com/strangeAeon', shrink: true),
+            ],
+            heartIcon: true,
+          ),
           _buildCreator('Daniel Scheibe', <Widget>[]),
           Divider(),
           SizedBox(height: 5),
