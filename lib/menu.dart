@@ -6,7 +6,9 @@ class Menu extends StatelessWidget {
   const Menu();
 
   bool _isHomeScreen(Route route) =>
-      route.settings.name == '/' || route.settings.name == 'home';
+      route.settings.name == '/' ||
+      route.settings.name == 'home' ||
+      route.settings.name == 'mySchedule';
 
   void _pushOnHome(NavigatorState navigator, String routeName) {
     navigator.pop();
@@ -37,7 +39,10 @@ class Menu extends StatelessWidget {
             ListTile(
               title: Text(i18n.mySchedule, style: theme.textTheme.title),
               leading: Icon(Icons.star, color: Colors.black87),
-              onTap: () => _pushOnHome(navigator, 'mySchedule'),
+              onTap: () {
+                navigator.popUntil(_isHomeScreen);
+                navigator.pushReplacementNamed('mySchedule');
+              },
             ),
             ListTile(
               title: Text(i18n.important, style: theme.textTheme.title),
