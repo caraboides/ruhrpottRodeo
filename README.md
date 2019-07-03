@@ -1,16 +1,19 @@
 # ruhrpott_rodeo
 
-A new Flutter project.
+A Flutter app to manage your festival. Feel free to fork and change it for your need.
 
-## Getting Started
+## How to build
 
-This project is a starting point for a Flutter application.
+`flutter run`
 
-A few resources to get you started if this is your first Flutter project:
+## How to release
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Inc build number
+ 
+`flutter build apk --release`
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Upload to playstore and inc build number
+
+`flutter build apk --release --target-platform=android-arm64`
+
+Upload to playstore.
