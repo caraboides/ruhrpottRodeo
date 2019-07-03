@@ -8,12 +8,8 @@ A Flutter app to manage your festival. Feel free to fork and change it for your 
 
 ## How to release
 
-Inc build number
- 
-`flutter build apk --release`
+Inc build number in `pubspec.yaml`
 
-Upload to playstore and inc build number
-
-`flutter build apk --release --target-platform=android-arm64`
+`flutter build apk --target-platform android-arm,android-arm64 --split-per-abi`
 
 Upload to playstore.
